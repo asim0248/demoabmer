@@ -1,4 +1,4 @@
-const WrapAsync = require('../utils/wrapAsync');
+const WrapAsync = require('../utils/WrapAsync');
 
 //Our Vehicle model
 const OurVehicle = require('../models/our-vehicle.js');
