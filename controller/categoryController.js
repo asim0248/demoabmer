@@ -5,7 +5,7 @@ const slugify = require('slugify');
 const Blogcategory = require('../models/blog-category.js');
 
 //WrapAsync
-const WrapAsync = require('../utils/WrapAsync');
+const WrapAsync = require('../utils/wrapAsync');
 
 //Render Categoy Page
 module.exports.renderCategoryPage = WrapAsync(async (req, res) => {
