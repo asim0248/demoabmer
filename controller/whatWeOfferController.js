@@ -1,6 +1,6 @@
 const slugify = require('slugify');
 
-const WrapAsync = require('../utils/wrapAsync');
+const WrapAsync = require('../utils/WrapAsync');
 
 //Our Vehicle model
 const Services = require('../models/what-we-offer.js');
