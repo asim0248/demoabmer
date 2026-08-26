@@ -113,7 +113,7 @@ const { isLoggedIn, hasPermission } = require('./utils/middlewares.js');
 const frontEndMiddleware = require('./utils/pagesMiddleware.js');
 
 //WrapAsync
-const WrapAsync = require('./utils/wrapAsync');
+const WrapAsync = require('./utils/WrapAsync');
 
 //Express Error
 const ExpressError = require('./utils/expressError');
