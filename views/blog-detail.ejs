@@ -1,0 +1,151 @@
+<%- include("partials/header/header.ejs") %>
+
+    <div class="page-wrapper">
+        <%- include("partials/menu/menu.ejs") %>
+
+
+            <%- include("partials/breadcrump/breadcrump.ejs") %>
+                <!--Blog Details Start -->
+                <section class="blog-details blog-details__left-sidebar">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-7">
+                                <div class="blog-details__left">
+                                    <div class="blog-details__img-box-1">
+                                        <div class="blog-details__img">
+                                            <% if(blog.detailImage && blog.detailImage.url){ %>
+                                                <img src="<%= blog.detailImage.url %>" alt="img">
+                                                <% } %>
+                                        </div>
+                                        <div class="blog-details__date">
+
+                                            <p>
+                                                <%= new Date(blog.createdAt).getDate() %>
+                                                    <span>
+                                                        <%= new
+                                                            Date(blog.createdAt).toLocaleString('en-US',{month:'short'})
+                                                            %>
+                                                    </span>
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="blog-details__content">
+                                        <div class="blog-details__user-and-meta">
+                                            <div class="blog-details__user">
+                                                <p><span class="icon-user-1"></span>By <%= blog.author?.name || 'Admin'
+                                                        %>
+                                                </p>
+                                            </div>
+                                            <ul class="blog-details__meta list-unstyled">
+                                                <li>
+                                                    <a href="#"><span class="fas fa-comments"></span>Comments (05)</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <h3 class="blog-details__title">
+                                            <%= blog.title %>
+                                        </h3>
+                                        <%- blog.detailContent %>
+                                            <div class="blog-details__tag-and-share">
+                                                <div class="blog-details__tag">
+                                                    <h3 class="blog-details__tag-title">Tags :</h3>
+                                                    <ul class="blog-details__tag-list list-unstyled">
+                                                        <% blog.tags.forEach(tag=> { %>
+                                                            <li>
+                                                                <a href="/blog/tag/<%= tag.slug %>">
+                                                                    <%= tag.tagName %>
+                                                                </a>
+                                                            </li>
+                                                            <% }); %>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="blog-details__share-box">
+                                                    <h3 class="blog-details__share-title">Share :</h3>
+                                                    <div class="blog-details__share">
+                                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<%= encodeURIComponent(currentUrl) %>"><span class="icon-facebook-app-symbol"></span></a>
+                                                        <a href="https://twitter.com/intent/tweet?url=<%= encodeURIComponent(currentUrl) %>&text=<%= encodeURIComponent(blog.blogTitle) %>"><span class="icon-twitter"></span></a>
+                                                        <a href="https://pinterest.com/pin/create/button/?url=<%= encodeURIComponent(currentUrl) %>&description=<%= encodeURIComponent(blog.blogTitle) %>"><span class="icon-pinterest"></span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <% if(allBlogComments.length> 0) { %>
+                                            <div class="comment-one">
+                                               
+                                                    <% allBlogComments.forEach(blgComemnt=> { %>
+                                                        <div class="comment-one__single">
+                                                            <div class="comment-one__content">
+                                                                <h3>
+                                                                    <%= blgComemnt.name %>
+                                                                </h3>
+                                                                <span>
+                                                                    <%= new
+                                                                        Date(blgComemnt.createdAt).toLocaleString('en-GB',
+                                                                        { day: '2-digit' , month: 'long' ,
+                                                                        year: 'numeric' , hour: '2-digit' ,
+                                                                        minute: '2-digit' , hour12: true
+                                                                        }).replace(',', ' at' ) %>
+                                                                </span>
+                                                                <p>
+                                                                    <%= blgComemnt.comment %>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <% }); %>
+                                            </div>
+                                            <% } %>
+                                            <div class="comment-form">
+                                                <h3 class="comment-form__title">Leave A Reply</h3>
+                                                <p class="comment-form__text">By using form u agree with the message
+                                                    sorage,
+                                                    you
+                                                    can
+                                                    contact us directly now</p>
+                                                <form action="/blog/comment" method="POST" class="comment-one__form">
+                                                    <input type="hidden" name="postId" value="<%= blog._id %>">
+                                                    <input type="hidden" name="slug" value="<%= blog.slug %>">
+                                                    <div class="row">
+                                                        <div class="col-xl-6">
+                                                            <div class="comment-form__input-box">
+                                                                <input type="text" placeholder="Your Name" name="name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6">
+                                                            <div class="comment-form__input-box">
+                                                                <input type="email" placeholder="Your Email"
+                                                                    name="email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xl-12">
+                                                            <div class="comment-form__input-box text-message-box">
+                                                                <textarea name="comment"
+                                                                    placeholder="Write your messege"></textarea>
+                                                            </div>
+                                                            <div class="comment-form__btn-box">
+                                                                <button type="submit"
+                                                                    class="footer-widget__newsletter-btn thm-btn">submit
+                                                                    now<span class="icon-next"></span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="result"></div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Start Sidebar-->
+                            <div class="col-xl-4 col-lg-5">
+                                <%- include("partials/blog-sidebar/blog-sidebar.ejs") %>
+                            </div>
+                            <!--End Sidebar-->
+                        </div>
+                    </div>
+                </section>
+                <!--Blog Details Start-->
+
+                <%- include("partials/footer/footer2.ejs") %>

@@ -1,0 +1,186 @@
+<%- include("partials/boilerplate.ejs") %>
+
+  <%- include("partials/header.ejs") %>
+
+    <!-- Page header end-->
+    <div class="page-body-wrapper">
+      <!-- Page sidebar start-->
+      <%- include("partials/sidebar.ejs") %>
+        <!-- Page sidebar end-->
+        <div class="page-body">
+          <%- include("partials/flash.ejs") %>
+            <div class="container-fluid">
+              <div class="row page-title">
+                <div class="col-sm-6">
+                  <h3>Master Admin Dashboard</h3>
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid default-dashboard">
+              <div class="row">
+                <div class="col-sm-6 col-xl-3">
+                  <div class="card social-profile">
+                    <div class="card-body">
+                      <div class="social-img-wrap2">
+                        <div class="social-img">
+                          <i class="fa-solid fa-gear"></i>
+                          <h4 class="mb-1">Settings</h4>
+                        </div>
+                        <div class="social-details">
+                          <a href="/admin/setting" class="btn m-1 btn-primary">Settings</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                  <div class="card social-profile">
+                    <div class="card-body">
+                      <div class="social-img-wrap2">
+                        <div class="social-img">
+                          <i class="fa-regular fa-image"></i>
+                          <h4 class="mb-1">Banner</h4>
+                        </div>
+                        <div class="social-details">
+                          <a href="" class="btn m-1 btn-primary">Banner</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                  <div class="card social-profile">
+                    <div class="card-body">
+                      <div class="social-img-wrap2">
+                        <div class="social-img">
+                          <i class="fa-regular fa-file"></i>
+                          <h4 class="mb-1">CMS</h4>
+                        </div>
+                        <div class="social-details">
+                          <a href="" class="btn m-1 btn-primary">CMS</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                  <div class="card social-profile">
+                    <div class="card-body">
+                      <div class="social-img-wrap2">
+                        <div class="social-img">
+                          <i class="fa-solid fa-lock"></i>
+                          <h4 class="mb-1">Logout</h4>
+                        </div>
+                        <div class="social-details">
+                          <a href="/admin/logout" class="btn m-1 btn-primary">Logout</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="container-fluid default-dashboard">
+              <div class="row page-title">
+                <div class="col-12">
+                  <h3>Website Stats Overview</h3>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6 col-xl-4">
+                  <div class="stat-card">
+                    <div class="icon-wrap">
+                      <i class="fa-solid fa-file"></i>
+                    </div>
+                    <div class="stat-label">Total Blogs</div>
+                    <div class="stat-value">
+                      <%= allCountBlogs %>
+                    </div>
+                    <!-- <div class="stat-footer">
+                      <span class="trend-up">▲ 12%</span>
+                      <span class="stat-sub">vs last month</span>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                  <div class="stat-card">
+                    <div class="icon-wrap">
+                      <i class="fa-solid fa-file"></i>
+                    </div>
+                    <div class="stat-label">Total Active Blogs</div>
+                    <div class="stat-value">
+                      <%= allCountActiveBlogs %>
+                    </div>
+                    <!-- <div class="stat-footer">
+                      <span class="trend-up">▲ 12%</span>
+                      <span class="stat-sub">vs last month</span>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                  <div class="stat-card">
+                    <div class="icon-wrap">
+                      <i class="fa-solid fa-file"></i>
+                    </div>
+                    <div class="stat-label">Scheduled Blogs</div>
+                    <div class="stat-value">
+                      <%= allCountScheduleBlogs %>
+                    </div>
+                    <!-- <div class="stat-footer">
+                      <span class="trend-up">▲ 12%</span>
+                      <span class="stat-sub">vs last month</span>
+                    </div> -->
+                  </div>
+                </div>
+                                <div class="col-sm-6 col-xl-4">
+                  <div class="stat-card">
+                    <div class="icon-wrap">
+                      <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="stat-label">Total Contact Enquiries</div>
+                    <div class="stat-value">
+                      <%= allCountContactEnquiries %>
+                    </div>
+                    <!-- <div class="stat-footer">
+                      <span class="trend-up">▲ 12%</span>
+                      <span class="stat-sub">vs last month</span>
+                    </div> -->
+                  </div>
+                </div>
+                                <div class="col-sm-6 col-xl-4">
+                  <div class="stat-card">
+                    <div class="icon-wrap">
+                      <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="stat-label">Total Newsletter Subscriber</div>
+                    <div class="stat-value">
+                      <%= allCountNewsletter %>
+                    </div>
+                    <!-- <div class="stat-footer">
+                      <span class="trend-up">▲ 12%</span>
+                      <span class="stat-sub">vs last month</span>
+                    </div> -->
+                  </div>
+                </div>
+                                <div class="col-sm-6 col-xl-4">
+                  <div class="stat-card">
+                    <div class="icon-wrap">
+                      <i class="fa-solid fa-file"></i>
+                    </div>
+                    <div class="stat-label">Total Blog Comments</div>
+                    <div class="stat-value">
+                      <%= allCountComments %>
+                    </div>
+                    <!-- <div class="stat-footer">
+                      <span class="trend-up">▲ 12%</span>
+                      <span class="stat-sub">vs last month</span>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <%- include("partials/footer.ejs") %>

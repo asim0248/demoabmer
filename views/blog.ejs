@@ -1,0 +1,115 @@
+<%- include("partials/header/header.ejs") %>
+
+    <div class="page-wrapper">
+        <%- include("partials/menu/menu.ejs") %>
+
+            <%- include("partials/breadcrump/breadcrump.ejs") %>
+
+                <!--Blog Page Start -->
+                <% if(blogs && blogs.length> 0){ %>
+                    <section class="blog-page">
+                        <div class="container">
+                            <div class="row">
+                                <!--Blog One Single Start-->
+                                <% blogs.forEach(blog=> { %>
+                                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
+                                        <div class="blog-one__single">
+                                            <div class="blog-one__single-inner">
+                                                <div class="blog-one__img-box">
+                                                    <div class="blog-one__img">
+                                                        <img src="<%= blog.featureImage.url %>" alt="">
+
+                                                        <% if(blog.category && blog.category.length> 0){ %>
+                                                            <div class="blog-one__tags">
+                                                                <span>
+                                                                    <%= blog.category[0].categoryName %>
+                                                                </span>
+                                                            </div>
+                                                            <% } %>
+                                                    </div>
+                                                    <div class="blog-one__date">
+                                                        <p>
+                                                            <%= new Date(blog.createdAt).getDate() %>
+                                                                <span>
+                                                                    <%= new
+                                                                        Date(blog.createdAt).toLocaleString('en-US',{month:'short'})
+                                                                        %>
+                                                                </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="blog-one__content">
+                                                    <ul class="blog-one__meta list-unstyled">
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="fas fa-user"></span>
+                                                                <%= blog.author?.name || 'Admin' %>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="fas fa-comments"></span>Comment
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <h3 class="blog-one__title"><a href="/blog/<%= blog.slug %>">
+                                                            <%= blog.blogTitle %>
+                                                        </a></h3>
+                                                    <p class="blog-one__text">
+                                                        <%= blog.shortContent %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="blog-one__read-more-box">
+                                                <a href="/blog/<%= blog.slug %>" class="blog-one__read-more">Read More
+                                                    <span class="fas fa-arrow-right"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                        <!--Blog One Single End-->
+                            </div>
+                        </div>
+                    </section>
+                    <% } %>
+
+                        <% if(totalPages> 1){ %>
+
+                            <div class="blog-list__pagination">
+                                <ul class="pg-pagination list-unstyled">
+                                    <% if(currentPageNo> 1){ %>
+                                        <li class="prev">
+                                            <a href="/blog?page=<%= currentPageNo - 1 %>">
+                                                <i class="fas fa-angle-left"></i>
+                                            </a>
+                                        </li>
+
+                                        <% } %>
+
+                                            <% for(let i=1; i<=totalPages; i++){ %>
+
+                                                <li class="count">
+                                                    <a href="/blog?page=<%= i %>"
+                                                        class="<%= currentPageNo === i ? 'active' : '' %>">
+                                                        <%= i %>
+                                                    </a>
+                                                </li>
+
+
+                                                <% } %>
+
+                                                    <% if(currentPageNo < totalPages){ %>
+                                                        <li class="next">
+                                                            <a href="/blog?page=<%= currentPageNo + 1 %>">
+                                                                <i class="fas fa-angle-right"></i>
+                                                            </a>
+                                                        </li>
+
+                                                        <% } %>
+                                </ul>
+                            </div>
+
+                            <% } %>
+                                <!--Blog Page End -->
+
+                                <%- include("partials/footer/footer2.ejs") %>

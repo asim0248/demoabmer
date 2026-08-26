@@ -1,0 +1,199 @@
+<div class="overlay"></div>
+<aside class="page-sidebar" data-sidebar-layout="stroke-svg">
+  <div class="left-arrow" id="left-arrow">
+    <svg class="feather">
+      <use href="https://admin.pixelstrap.net/edmin/assets/svg/feather-icons/dist/feather-sprite.svg#arrow-left">
+      </use>
+    </svg>
+  </div>
+  <div id="sidebar-menu">
+    <ul class="sidebar-menu" id="simple-bar">
+      <li class="sidebar-list">
+        <a class="sidebar-link" href="/admin/dashboard">
+          <i class="fa-regular fa-house"></i><span>Dashboard</span>
+        </a>
+      </li>
+      <% if (currentUser?.isMasterAdmin || permissions.includes('setting')) { %>
+        <li class="sidebar-list">
+          <a class="sidebar-link" href="/admin/setting">
+            <i class="fa-solid fa-gear"></i><span>Setting</span>
+          </a>
+        </li>
+        <% } %>
+          </li>
+          <% if (currentUser?.isMasterAdmin || permissions.includes('notifications')) { %>
+            <li class="sidebar-list">
+              <a class="sidebar-link" href="/admin/notifications">
+                <i class="fa-solid fa-bell"></i><span>Notifications</span> <span
+                  class="badge rounded-pill badge-secondary" style="color: #fff;">
+                  <%= unreadCount %>
+                </span>
+              </a>
+            </li>
+            <% } %>
+              <% if (currentUser?.isMasterAdmin || permissions.includes('blog-post')) { %>
+                <li class="sidebar-list">
+                  <a class="sidebar-link" href="javascript:void(0)">
+                    <i class="fa-regular fa-file"></i><span>Website Stats</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </a>
+                  <ul class="sidebar-submenu">
+                    <li><a href="/admin/blog/blog-category">
+                        All Blogs Status</a></li>
+                    <li><a href="/admin/blog/blog-tags">
+                        Contact Stats</a></li>
+                    <li><a href="/admin/blog/blog-comments">
+                        Newsletter Stats</a></li>
+                  </ul>
+                </li>
+                <% } %>
+                  <% if (currentUser?.isMasterAdmin || permissions.includes('admin-role')) { %>
+                    <li class="sidebar-list">
+                      <a class="sidebar-link" href="javascript:void(0)">
+                        <i class="fa-solid fa-user"></i><span>Admin Role</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </a>
+                      <ul class="sidebar-submenu">
+                        <li><a href="/admin/role">
+                            Role</a></li>
+                        <li><a href="/admin/employee">
+                            Employee</a></li>
+                      </ul>
+                    </li>
+                    <% } %>
+                      <% if (currentUser?.isMasterAdmin || permissions.includes('custom-code')) { %>
+                        <li class="sidebar-list">
+                          <a class="sidebar-link" href="/admin/custom-code">
+                            <i class="fa-solid fa-code"></i><span>Custom Code</span></a>
+                        </li>
+                        <% } %>
+                          <% if (currentUser?.isMasterAdmin || permissions.includes('contact-query')) { %>
+                            <li class="sidebar-list">
+                              <a class="sidebar-link" href="/admin/contact-query">
+                                <i class="fa-solid fa-envelope"></i><span>Contact Enquiries</span></a>
+                            </li>
+                            <% } %>
+                              <% if (currentUser?.isMasterAdmin || permissions.includes('hero-section')) { %>
+                                <li class="sidebar-list">
+                                  <a class="sidebar-link" href="/admin/hero-section">
+                                    <i class="fa-regular fa-image"></i><span>Hero Section</span></a>
+                                </li>
+                                <% } %>
+                                  <% if (currentUser?.isMasterAdmin || permissions.includes('about-us-section')) { %>
+                                    <li class="sidebar-list">
+                                      <a class="sidebar-link" href="/admin/about-us-section">
+                                        <i class="fa-solid fa-circle-info"></i><span>About Us Section</span></a>
+                                    </li>
+                                    <% } %>
+                                      <% if (currentUser?.isMasterAdmin ||
+                                        permissions.includes('about-us-page-section')) { %>
+                                        <li class="sidebar-list">
+                                          <a class="sidebar-link" href="/admin/about-us-page-section">
+                                            <i class="fa-solid fa-circle-info"></i><span>About Us Page
+                                              Section</span></a>
+                                        </li>
+                                        <% } %>
+                                          <% if (currentUser?.isMasterAdmin || permissions.includes('why-choose-us')) {
+                                            %>
+                                            <li class="sidebar-list">
+                                              <a class="sidebar-link" href="/admin/why-choose-us">
+                                                <i class="fa-regular fa-circle-question"></i><span>Why Choose
+                                                  Us</span></a>
+                                            </li>
+                                            <% } %>
+                                              <% if (currentUser?.isMasterAdmin || permissions.includes('how-it-works'))
+                                                { %>
+                                                <li class="sidebar-list">
+                                                  <a class="sidebar-link" href="/admin/how-it-works">
+                                                    <i class="fa-solid fa-book-open"></i><span>How It Works</span></a>
+                                                </li>
+                                                <% } %>
+                                                  <% if (currentUser?.isMasterAdmin ||
+                                                    permissions.includes('what-we-offer')) { %>
+                                                    <li class="sidebar-list">
+                                                      <a class="sidebar-link" href="/admin/what-we-offer">
+                                                        <i class="fa-regular fa-file"></i><span>What We Offer</span></a>
+                                                    </li>
+                                                    <% } %>
+                                                      <% if (currentUser?.isMasterAdmin || permissions.includes('faq'))
+                                                        { %>
+                                                        <li class="sidebar-list">
+                                                          <a class="sidebar-link" href="/admin/faq">
+                                                            <i
+                                                              class="fa-regular fa-circle-question"></i><span>FAQ's</span></a>
+                                                        </li>
+                                                        <% } %>
+                                                          <% if (currentUser?.isMasterAdmin ||
+                                                            permissions.includes('our-vehicle')) { %>
+                                                            <li class="sidebar-list">
+                                                              <a class="sidebar-link" href="/admin/our-vehicle">
+                                                                <i class="fa-solid fa-car"></i><span>Our
+                                                                  Vehicle</span></a>
+                                                            </li>
+                                                            <% } %>
+                                                              <% if (currentUser?.isMasterAdmin ||
+                                                                permissions.includes('damage-vehicle')) { %>
+                                                                <li class="sidebar-list">
+                                                                  <a class="sidebar-link" href="/admin/damage-vehicle">
+                                                                    <i class="fa-solid fa-car-burst"></i><span>Damage
+                                                                      Vehicles</span></a>
+                                                                </li>
+                                                                <% } %>
+                                                                  <% if (currentUser?.isMasterAdmin ||
+                                                                    permissions.includes('customer-reviews')) { %>
+                                                                    <li class="sidebar-list">
+                                                                      <a class="sidebar-link"
+                                                                        href="/admin/customer-reviews">
+                                                                        <i
+                                                                          class="fa-solid fa-star-half-stroke"></i><span>Customer
+                                                                          Reviews</span></a>
+                                                                    </li>
+                                                                    <% } %>
+                                                                      <% if (currentUser?.isMasterAdmin ||
+                                                                        permissions.includes('newsletter')) { %>
+                                                                        <li class="sidebar-list">
+                                                                          <a class="sidebar-link"
+                                                                            href="/admin/newsletter">
+                                                                            <i
+                                                                              class="fa-solid fa-envelope"></i><span>Newsletter</span></a>
+                                                                        </li>
+                                                                        <% } %>
+                                                                          <% if (currentUser?.isMasterAdmin ||
+                                                                            permissions.includes('blog-post')) { %>
+                                                                            <li class="sidebar-list">
+                                                                              <a class="sidebar-link"
+                                                                                href="javascript:void(0)">
+                                                                                <i class="fa-regular fa-file"></i><span>Blog
+                                                                                  Post</span>
+                                                                                <i class="fa-solid fa-chevron-down"></i>
+                                                                              </a>
+                                                                              <ul class="sidebar-submenu">
+                                                                                <li><a href="/admin/blog/blog-category">
+                                                                                    Category</a></li>
+                                                                                <li><a href="/admin/blog/blog-tags">
+                                                                                    Tags</a></li>
+                                                                                <li><a href="/admin/blog/blog-comments">
+                                                                                    Comments</a></li>
+                                                                                <li><a href="/admin/blog/posts">
+                                                                                    Posts</a></li>
+                                                                              </ul>
+                                                                            </li>
+                                                                            <% } %>
+                                                                              <% if (currentUser?.isMasterAdmin ||
+                                                                                permissions.includes('pages')) { %>
+                                                                                <li class="sidebar-list">
+                                                                                  <a class="sidebar-link"
+                                                                                    href="/admin/pages">
+                                                                                    <i
+                                                                                      class="fa-regular fa-file"></i><span>Pages</span></a>
+                                                                                </li>
+                                                                                <% } %>
+    </ul>
+  </div>
+  <div class="right-arrow" id="right-arrow">
+    <svg class="feather">
+      <use href="https://admin.pixelstrap.net/edmin/assets/svg/feather-icons/dist/feather-sprite.svg#arrow-right">
+      </use>
+    </svg>
+  </div>
+</aside>

@@ -1,0 +1,655 @@
+<%- include("partials/header/header.ejs") %>
+    <!-- End sidebar widget content -->
+    <div class="page-wrapper">
+
+        <%- include("partials/menu/menu.ejs") %>
+            <!--Main Slider Start-->
+            <section class="main-slider-two">
+                <div class="swiper-container thm-swiper__slider" data-swiper-options='{
+        "slidesPerView": 1,
+        "loop": true,
+        "effect": "fade",
+        "pagination": {
+            "el": "#main-slider-pagination",
+            "type": "bullets",
+            "clickable": true
+        },
+        "navigation": {
+            "nextEl": "#main-slider-two__swiper-button-next",
+            "prevEl": "#main-slider-two__swiper-button-prev"
+        },
+        "autoplay": {
+            "delay": 8000
+        }
+    }'>
+
+                    <div class="swiper-wrapper">
+
+                        <% if(heroSection && heroSection.length> 0){ %>
+
+                            <% heroSection.forEach(slide=> { %>
+
+                                <div class="swiper-slide">
+                                    <div class="main-slider-two__bg-box">
+                                        <div class="main-slider-two__bg"
+                                            style="background-image: url('<%= slide.sldImage.url %>');">
+                                        </div>
+                                    </div>
+
+                                    <div class="main-slider-two__shape-2">
+                                        <img src="/webassets/images/shapes/main-slider-two-shape-2.png" alt="">
+                                    </div>
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="main-slider-two__content">
+                                                    <div class="main-slider-two__content-inner">
+
+                                                        <% if(slide.tagLine){ %>
+                                                            <h4 class="main-slider-two__sub-title">
+                                                                <%= slide.tagLine %>
+                                                            </h4>
+                                                            <% } %>
+
+                                                                <h2 class="main-slider-two__title">
+                                                                    <%- slide.heading %>
+                                                                </h2>
+
+                                                                <% if(slide.paraText){ %>
+                                                                    <p class="main-slider-two__text">
+                                                                        <%= slide.paraText %>
+                                                                    </p>
+                                                                    <% } %>
+
+                                                                        <% if(slide.buttonText && slide.buttonLink){ %>
+                                                                            <div
+                                                                                class="main-slider-two__btn-and-video-box">
+                                                                                <div class="main-slider-two__btn-box">
+                                                                                    <a href="<%= slide.buttonLink %>"
+                                                                                        class="thm-btn">
+                                                                                        <%= slide.buttonText %>
+                                                                                            <span>
+                                                                                                <i
+                                                                                                    class="icon-next"></i>
+                                                                                            </span>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <% } %>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <% }) %>
+
+                                    <% } %>
+
+                    </div>
+
+                    <div class="swiper-pagination" id="main-slider-pagination"></div>
+                </div>
+            </section>
+            <!--Main Slider End-->
+
+            <!--About Two Start-->
+            <section class="about-two">
+                <div class="about-two__shape-1 float-bob-y">
+                    <img src="/webassets/images/shapes/about-two-shape-1.png" alt="">
+                </div>
+                <div class="about-two__shape-2 img-bounce">
+                    <img src="/webassets/images/shapes/about-two-shape-2.png" alt="">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="about-two__left wow slideInLeft" data-wow-delay="100ms"
+                                data-wow-duration="2500ms">
+                                <div class="about-two__img-box">
+                                    <div class="about-two__img">
+                                        <img src="<%= showAboutSection.mainImage.url %>" alt="">
+                                    </div>
+                                    <div class="about-two__img-2">
+                                        <img src="<%= showAboutSection.secondImage.url %>" alt="">
+                                    </div>
+                                    <div class="about-two__experience-box">
+                                        <div class="about-two__experience-count">
+                                            <h3 class="odometer" data-count="<%= showAboutSection.experienceYear %>">00
+                                            </h3>
+                                            <span>+</span>
+                                        </div>
+                                        <p class="about-two__experience-count-text">
+                                            <%= showAboutSection.experienceText %>
+                                        </p>
+                                    </div>
+                                    <div class="about-two__video-link">
+                                        <a href="<%= showAboutSection.videoLink %>" class="video-popup">
+                                            <div class="about-two__video-icon">
+                                                <span class="fa fa-play"></span>
+                                                <i class="ripple"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="about-two__right">
+                                <div class="section-title text-left sec-title-animation animation-style2">
+                                    <div class="section-title__tagline-box">
+                                        <div class="section-title__tagline-border">
+                                            <div class="section-title__shape-1">
+                                                <i class="section-title__circle"></i>
+                                            </div>
+                                        </div>
+                                        <h6 class="section-title__tagline">
+                                            <%= showAboutSection.smallHeading %>
+                                        </h6>
+                                        <div class="section-title__tagline-border">
+                                            <div class="section-title__shape-2">
+                                                <i class="section-title__circle"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h3 class="section-title__title title-animation"><%- showAboutSection.heading %>
+                                    </h3>
+                                </div>
+                                <p class="about-two__text">
+                                    <%= showAboutSection.description %>
+                                </p>
+                                <% if(!showAboutSection?.features?.length) {%>
+                                    <p>No Features Found</p>
+                                    <% } else { %>
+                                        <ul class="about-two__points-box">
+                                            <% showAboutSection.features.forEach(sngFeature=> { %>
+                                                <li>
+                                                    <div class="icon">
+                                                        <span class="<%= sngFeature.icon %>"></span>
+                                                    </div>
+                                                    <div class="content">
+                                                        <h4 class="about-two__points-title">
+                                                            <%= sngFeature.title %>
+                                                        </h4>
+                                                        <p class="about-two__points-text">
+                                                            <%= sngFeature.description %>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <% }); %>
+                                        </ul>
+                                        <% } %>
+                                            <div class="about-two__btn-and-review-box">
+                                                <div class="about-two__btn-box">
+                                                    <a href="<%= showAboutSection.buttonLink %>" class="thm-btn">
+                                                        <%= showAboutSection.buttonText %>
+                                                            <span class="icon-next"></span>
+                                                    </a>
+                                                </div>
+                                                <div class="about-two__review-box">
+                                                    <ul class="list-unstyled about-two__review-list">
+                                                        <li>
+                                                            <div class="about-two__review-img">
+                                                                <img src="/webassets/images/resources/about-two-review-img-1-1.jpg"
+                                                                    alt="">
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="about-two__review-img">
+                                                                <img src="/webassets/images/resources/about-two-review-img-1-2.jpg"
+                                                                    alt="">
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="about-two__review-img">
+                                                                <img src="/webassets/images/resources/about-two-review-img-1-3.jpg"
+                                                                    alt="">
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="about-two__review-star-and-text">
+                                                        <div class="about-two__review-star">
+                                                            <span class="fas fa-star"></span>
+                                                            <span class="fas fa-star"></span>
+                                                            <span class="fas fa-star"></span>
+                                                            <span class="fas fa-star"></span>
+                                                            <span class="fas fa-star"></span>
+                                                        </div>
+                                                        <p class="about-two__review-text">Clients 4.8 (3,567 Reviews)
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--About Two End-->
+
+            <!--Services Two Start-->
+            <% if(homeServices && homeServices.length> 0){ %>
+
+                <section class="service-two">
+                    <div class="service-two__wrap">
+                        <div class="container">
+                            <div class="section-title text-center sec-title-animation animation-style1">
+                                <div class="section-title__tagline-box">
+                                    <div class="section-title__tagline-border">
+                                        <div class="section-title__shape-1">
+                                            <i class="section-title__circle"></i>
+                                        </div>
+                                    </div>
+                                    <h6 class="section-title__tagline">SEE OUR WORK</h6>
+                                    <div class="section-title__tagline-border">
+                                        <div class="section-title__shape-2">
+                                            <i class="section-title__circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="section-title__title title-animation">Explore Our <span>Recent
+                                        Work</span>
+                                </h3>
+                            </div>
+
+                            <div class="service-two__inner">
+                                <div class="row">
+
+                                    <% homeServices.forEach((service, index)=> { %>
+
+                                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft"
+                                            data-wow-delay="<%= (index + 1) * 100 %>ms">
+
+                                            <div class="service-two__single">
+                                                <div class="service-two__single-inner">
+
+                                                    <div class="service-two__single-bg"
+                                                        style="background-image: url('<%= service.serviceCardImg?.url || "" %>');">
+                                                    </div>
+
+                                                    <h3 class="service-two__title">
+                                                        <a href="/services/<%= service.slug %>">
+                                                            <%= service.title %>
+                                                        </a>
+                                                    </h3>
+
+                                                    <div class="service-two__count"></div>
+
+                                                    <p class="service-two__text">
+                                                        <%= service.shortContent %>
+                                                    </p>
+
+                                                    <div class="service-two__read-more">
+                                                        <a href="/services/<%= service.slug %>">
+                                                            <span class="icon-next"></span>
+                                                            Read More
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="service-two__icon">
+                                                    <% if(service.serviceIcon?.url){ %>
+                                                        <img src="<%= service.serviceIcon.url %>"
+                                                            alt="<%= service.title %>">
+                                                        <% } %>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <% }) %>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-two__see-more">
+                        <a href="/what-we-offer">
+                            View All Services<span class="icon-next"></span>
+                        </a>
+                    </div>
+                </section>
+
+                <% } %>
+                    <!--Services Two End-->
+
+                    <!--Why Choose Two Start-->
+                    <section class="why-choose-two">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="why-choose-two__left">
+                                        <div class="section-title text-left sec-title-animation animation-style2">
+                                            <div class="section-title__tagline-box">
+                                                <div class="section-title__tagline-border">
+                                                    <div class="section-title__shape-1">
+                                                        <i class="section-title__circle"></i>
+                                                    </div>
+                                                </div>
+                                                <h6 class="section-title__tagline">
+                                                    <%= showWhyChooseSection.smallHeading %>
+                                                </h6>
+                                                <div class="section-title__tagline-border">
+                                                    <div class="section-title__shape-2">
+                                                        <i class="section-title__circle"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h3 class="section-title__title title-animation"><%-
+                                                    showWhyChooseSection.heading %>
+                                            </h3>
+                                        </div>
+                                        <p class="why-choose-two__text">
+                                            <%= showWhyChooseSection.shortDescription %>
+                                        </p>
+                                        <ul class="why-choose-two__points">
+                                            <% if(showWhyChooseSection.features.length===0) { %>
+                                                <p>No features Found</p>
+                                                <% } else { %>
+                                                    <% showWhyChooseSection.features.forEach(whyFeature=> { %>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="<%= whyFeature.icon %>"></span>
+                                                            </div>
+                                                            <div class="content">
+                                                                <h4>
+                                                                    <%= whyFeature.title %>
+                                                                </h4>
+                                                                <p>
+                                                                    <%= whyFeature.description %>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <% }); %>
+                                                            <% } %>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="why-choose-two__right">
+                                        <div class="why-choose-two__img-box">
+                                            <div class="why-choose-two__img">
+                                                <div class="before-after-twentytwenty" id="wrinkle-before-after">
+                                                    <img src="<%= showWhyChooseSection.beforeImage.url %>" alt="">
+                                                    <img src="<%= showWhyChooseSection.afterImage.url %>" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--Why Choose Two End-->
+
+                    <!--Our Vehicle -->
+                    <% if(ourVehicle && ourVehicle.length> 0){ %>
+                        <section class="project-two">
+                            <div class="project-two__bg-color"></div>
+                            <div class="container">
+                                <div class="project-two__top">
+                                    <div class="section-title text-left sec-title-animation animation-style2">
+                                        <div class="section-title__tagline-box">
+                                            <div class="section-title__tagline-border">
+                                                <div class="section-title__shape-1">
+                                                    <i class="section-title__circle"></i>
+                                                </div>
+                                            </div>
+                                            <h6 class="section-title__tagline">SEE OUR WORK</h6>
+                                            <div class="section-title__tagline-border">
+                                                <div class="section-title__shape-2">
+                                                    <i class="section-title__circle"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3 class="section-title__title title-animation">Explore Our
+                                            <span>Vehicle</span>
+                                        </h3>
+                                    </div>
+                                    <div class="project-two__btn-box">
+                                        <a href="/our-vehicle" class="thm-btn">view all vehicle
+                                            <span><i class="icon-next"></i></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-two__bottom">
+                                <div class="container">
+                                    <div class="project-two__carousel owl-carousel owl-theme">
+                                        <!--Project Two Single Start-->
+                                        <% ourVehicle.forEach((vehicle)=> { %>
+                                            <div class="item">
+                                                <div class="project-two__single">
+                                                    <div class="project-two__img-box">
+                                                        <div class="project-two__img">
+                                                            <img src="<%= vehicle.vehicleImage.url %>"
+                                                                alt="<%= vehicle.altText %>">
+                                                        </div>
+                                                        <div class="project-two__content">
+                                                            <div class="project-two__title-box">
+                                                                <a href="<%= vehicle.vehicleImage.url %>"
+                                                                    class="img-popup"><span
+                                                                        class="fas fa-plus"></span></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                                <!--Project Two Single End-->
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <% } %>
+                            <!--Project Two End -->
+
+                            <!--Testimonial Two Start -->
+                            <section class="testimonial-two">
+                                <div class="container">
+                                    <div class="testimonial-two__top">
+                                        <div class="section-title text-left sec-title-animation animation-style2">
+                                            <div class="section-title__tagline-box">
+                                                <div class="section-title__tagline-border">
+                                                    <div class="section-title__shape-1">
+                                                        <i class="section-title__circle"></i>
+                                                    </div>
+                                                </div>
+                                                <h6 class="section-title__tagline">Testimonials</h6>
+                                                <div class="section-title__tagline-border">
+                                                    <div class="section-title__shape-2">
+                                                        <i class="section-title__circle"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h3 class="section-title__title title-animation">Hear from Our
+                                                <span>Customers</span>
+                                            </h3>
+                                        </div>
+                                        <div class="testimonial-two__nav">
+                                            <div class="swiper-button-next1">
+                                                <i class="icon-back"></i>
+                                            </div>
+                                            <div class="swiper-button-prev1">
+                                                <i class="icon-next"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-container testimonial-two__carousel">
+                                        <div class="swiper-wrapper">
+                                            <% if(allReviews.length===0) {%>
+                                                <p class="text-center">No Reviews Found.</p>
+                                                <% } else { %>
+                                                    <% allReviews.forEach(review=> { %>
+                                                        
+                                                        <!--Testimonial Two Single Start-->
+                                                        <div class="swiper-slide">
+                                                            <div class="testimonial-two__single-inner">
+                                                                <div class="testimonial-two__single">
+                                                                    <div class="testimonial-two__single-bg-shape"
+                                                                        style="background-image: url(assets/images/shapes/testimonial-two-single-bg-shape.png);">
+                                                                    </div>
+                                                                    <div class="testimonial-two__author-box">
+                                                                        <div class="testimonial-two__author-img">
+                                                                            <img src="<%= review.customerImage.url %>"
+                                                                                alt="">
+                                                                        </div>
+                                                                        <div class="testimonial-two__author-content">
+                                                                            <h3 class="testimonial-two__author-name"><a
+                                                                                    href="#">
+                                                                                    <%= review.customerName %>
+                                                                                </a></h3>
+                                                                            <p lass="testimonial-two__author-sub-title">
+                                                                                <%= review.location %>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="testimonial-two__author-text">
+                                                                        <%= review.reviewText %>
+                                                                    </p>
+                                                                    <div class="testimonial-two__quote">
+                                                                        <span class="fas fa-quote-right"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="testimonial-two__days">
+                                                                    <span><%= review.timeAgo %></span>
+                                                                </div>
+                                                                <div class="testimonial-two__ratting">
+                                                                    <% for(let i=1; i <=5; i++) { %>
+                                                                        <% if(i <=review.rating){ %>
+                                                                            <span class="fas fa-star"></span>
+                                                                            <% } else { %>
+                                                                                <span class="far fa-star"></span>
+                                                                                <% } %>
+                                                                                    <% } %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--Testimonial Two Single End-->
+                                                        <% }); %>
+                                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!--Testimonial Two End -->
+
+                            <!--Damage Vehicle -->
+                            <!--Project Two End -->
+
+                            <!--Blog Two Start -->
+                            <section class="blog-two">
+                                <div class="container">
+                                    <div class="section-title text-center sec-title-animation animation-style1">
+                                        <div class="section-title__tagline-box">
+                                            <div class="section-title__tagline-border">
+                                                <div class="section-title__shape-1">
+                                                    <i class="section-title__circle"></i>
+                                                </div>
+                                            </div>
+                                            <h6 class="section-title__tagline">Blog & News</h6>
+                                            <div class="section-title__tagline-border">
+                                                <div class="section-title__shape-2">
+                                                    <i class="section-title__circle"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3 class="section-title__title title-animation">Latest News Directly
+                                            <br>From <span>Our Blog</span>
+                                        </h3>
+                                    </div>
+                                    <div class="row">
+                                        <% blogs.forEach(blog=> { %>
+
+                                            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft"
+                                                data-wow-delay="100ms">
+                                                <div class="blog-two__single">
+                                                    <div class="blog-two__single-inner">
+
+                                                        <div class="blog-two__img-box">
+                                                            <div class="blog-two__img">
+
+                                                                <img src="<%= blog.featureImage?.url || '/assets/images/blog/blog-2-1.jpg' %>"
+                                                                    alt="<%= blog.blogTitle %>">
+
+                                                                <div class="blog-two__plus">
+                                                                    <a href="/blog/<%= blog.slug %>">
+                                                                        <i class="fas fa-plus"></i>
+                                                                    </a>
+                                                                </div>
+
+                                                                <% if(blog.category && blog.category.length> 0){ %>
+                                                                    <div class="blog-two__tag">
+                                                                        <a href="#">
+                                                                            <%= blog.category[0].categoryName %>
+                                                                        </a>
+                                                                    </div>
+                                                                    <% } %>
+
+                                                            </div>
+
+                                                            <div class="blog-two__date">
+                                                                <p>
+                                                                    <%= new Date(blog.createdAt).getDate() %>
+                                                                        <span>
+                                                                            <%= new
+                                                                                Date(blog.createdAt).toLocaleString('en-US',{month:'short'})
+                                                                                %>
+                                                                        </span>
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="blog-two__content">
+
+                                                            <ul class="blog-two__meta list-unstyled">
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <span class="fas fa-calendar-alt"></span>
+                                                                        <%= new
+                                                                            Date(blog.createdAt).toLocaleDateString('en-US',{
+                                                                            year:'numeric', month:'long', day:'numeric'
+                                                                            }) %>
+                                                                    </a>
+                                                                </li>
+
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <span class="fas fa-comments"></span>
+                                                                        Comment
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+
+                                                            <h3 class="blog-two__title">
+                                                                <a href="/blog/<%= blog.slug %>">
+                                                                    <%= blog.blogTitle %>
+                                                                </a>
+                                                            </h3>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="blog-two__read-more">
+                                                        <a href="/blog/<%= blog.slug %>">
+                                                            <span class="icon-next"></span>Read More
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <% }) %>
+                                    </div>
+                                </div>
+                            </section>
+                            <!--Blog Two End -->
+
+                            <%- include("partials/footer/footer.ejs") %>

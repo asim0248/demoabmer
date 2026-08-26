@@ -1,0 +1,62 @@
+<%- include("../partials/boilerplate.ejs") %>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- Page header end-->
+        <div class="page-body-wrapper">
+            <!-- Page sidebar start-->
+            <%- include("../partials/sidebar.ejs") %>
+                <!-- Page sidebar end-->
+                <div class="page-body">
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-sm-12">
+                                <h3>Add New Slide</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <%- include("../partials/flash.ejs") %>
+                        <!-- Container-fluid starts-->
+                        <div class="container-fluid edit-profile">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form class="card" method="POST"
+                                        action="/admin/our-vehicle/<%= vehicle._id %>?_method=PUT"
+                                        enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Vehicle Image</label>
+                                                        <input class="form-control" name="vehicleImage" type="file">
+                                                        <img style="width: 100px; height: 100px; border-radius: 5px; margin-top: 15px;"
+                                                            src="<%= vehicle.vehicleImage.url %>" alt="img">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Sort Order</label>
+                                                        <input class="form-control" name="sortOrder" type="number"
+                                                            value="<%= vehicle.sortOrder %>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Alt Text</label>
+                                                        <input class="form-control" name="altText" type="text"
+                                                            value="<%= vehicle.altText %>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <button class="btn btn-primary" type="submit">Update Vehicle</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Container-fluid ends-->
+                </div>
+
+                <%- include("../partials/footer.ejs") %>

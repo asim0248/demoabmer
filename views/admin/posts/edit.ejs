@@ -1,0 +1,181 @@
+<%- include("../partials/boilerplate.ejs") %>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- Page header end-->
+        <div class="page-body-wrapper">
+            <!-- Page sidebar start-->
+            <%- include("../partials/sidebar.ejs") %>
+                <!-- Page sidebar end-->
+                <div class="page-body">
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-sm-12">
+                                <h3>Edit Post</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <%- include("../partials/flash.ejs") %>
+                        <!-- Container-fluid starts-->
+                        <div class="container-fluid edit-profile">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form class="card" method="POST"
+                                        action="/admin/blog/posts/<%= singlePost._id %>?_method=PUT"
+                                        enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="mb-3">
+                                                        <label>Publish Type</label>
+
+                                                        <select name="publishType" id="publishType"
+                                                            class="form-control">
+
+                                                            <option value="Publish"
+                                                                <%=singlePost.publishType==='Publish' ? 'selected' : ''
+                                                                %>>
+                                                                Publish
+                                                            </option>
+
+                                                            <option value="Schedule"
+                                                                <%=singlePost.publishType==='Schedule' ? 'selected' : ''
+                                                                %>>
+                                                                Schedule
+                                                            </option>
+
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="mb-3" id="scheduleBox">
+
+                                                        <label>Publish Date</label>
+
+                                                        <input type="datetime-local" class="form-control"
+                                                            name="publishDate"
+                                                            value="<%= singlePost.publishDate ? new Date(singlePost.publishDate).toISOString().slice(0,16) : '' %>">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="categories" class="form-label">Categories</label>
+
+                                                    <select id="category" name="category[]" class="form-control"
+                                                        multiple>
+                                                        <% category.forEach(catg=> { %>
+
+                                                            <option value="<%= catg._id %>"
+                                                                <%=singlePost.category.some(c=> c._id.toString() ===
+                                                                catg._id.toString()) ? 'selected' : '' %>
+                                                                >
+                                                                <%= catg.categoryName %>
+                                                            </option>
+
+                                                            <% }) %>
+                                                    </select>
+                                                </div>
+                                                <div class="col1-2">
+                                                    <label for="tags" class="form-label">Tags</label>
+
+                                                    <select id="tags" name="tags[]" class="form-control" multiple>
+                                                        <% tags.forEach(tag=> { %>
+
+                                                            <option value="<%= tag._id %>" <%=singlePost.tags.some(t=>
+                                                                t._id.toString() === tag._id.toString()) ? 'selected' :
+                                                                '' %>
+                                                                >
+                                                                <%= tag.tagName %>
+                                                            </option>
+
+                                                            <% }) %>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Blog Title<span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" value="<%= singlePost.blogTitle %>"
+                                                            name="blogTitle" id="blogTitle" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">slug<span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" value="<%= singlePost.slug %>"
+                                                            name="slug" id="slug" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">sort Order</label>
+                                                        <input class="form-control" value="<%= singlePost.sortOrder %>"
+                                                            name="sortOrder" type="number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Meta Title</label>
+                                                        <input class="form-control" value="<%= singlePost.metaTitle %>"
+                                                            name="metaTitle" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Meta Keywords</label>
+                                                        <input class="form-control"
+                                                            value="<%= singlePost.metaKeywords %>" name="metaKeywords"
+                                                            type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Meta Description</label>
+                                                        <textarea class="form-control" name="metaDescription"
+                                                            id=""><%= singlePost.metaDescription %></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Short Content</label>
+                                                        <textarea class="form-control" name="shortContent"
+                                                            id=""><%= singlePost.shortContent %></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Feature Image</label>
+                                                        <input class="form-control" name="featureImage" type="file">
+                                                        <img style="width: 100px; height: 100px; border-radius: 5px; margin-top: 15px;"
+                                                            src="<%= singlePost.featureImage?.url || '' %>" alt="img">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Deatil Image</label>
+                                                        <input class="form-control" name="detailImage" type="file">
+                                                        <img style="width: 100px; height: 100px; border-radius: 5px; margin-top: 15px;"
+                                                            src="<%= singlePost.detailImage?.url || '' %>" alt="img">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <label class="form-label">Detail Content</label>
+                                                    <textarea id="content"
+                                                        name="detailContent"><%= singlePost.detailContent %></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <button class="btn btn-primary" type="submit">Update Post</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Container-fluid ends-->
+                </div>
+
+                <%- include("../partials/footer.ejs") %>

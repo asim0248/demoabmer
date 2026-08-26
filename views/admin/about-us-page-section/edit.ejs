@@ -1,0 +1,140 @@
+<%- include("../partials/boilerplate.ejs") %>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- Page header end-->
+        <div class="page-body-wrapper">
+            <!-- Page sidebar start-->
+            <%- include("../partials/sidebar.ejs") %>
+                <!-- Page sidebar end-->
+                <div class="page-body">
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-sm-12">
+                                <h3>Edit About Us Section</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <%- include("../partials/flash.ejs") %>
+                        <!-- Container-fluid starts-->
+                        <div class="container-fluid edit-profile">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form class="card" method="POST" action="/admin/about-us-page-section/"
+                                        enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Small Heading</label>
+                                                        <input class="form-control" name="smallHeading" type="text"
+                                                            value="<%= pageEditAboutSection?.smallHeading || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Heading</label>
+                                                        <input class="form-control" name="heading" type="text"
+                                                            value="<%= pageEditAboutSection?.heading || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Year Of Experience</label>
+                                                        <input class="form-control" name="experienceYear" type="number"
+                                                            value="<%= pageEditAboutSection?.experienceYear || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Experience Text</label>
+                                                        <input class="form-control" name="experienceText" type="text"
+                                                            value="<%= pageEditAboutSection?.experienceText || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Description</label>
+                                                        <textarea name="description" id=""
+                                                            class="form-control"><%= pageEditAboutSection?.description || '' %></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Main Image</label>
+                                                        <input class="form-control" name="mainImage" type="file">
+                                                        <img style="width: 300px; height: 150px; border-radius: 5px; margin-top: 15px;"
+                                                            src="<%= pageEditAboutSection?.mainImage.url || '' %>"
+                                                            alt="img">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Second Image</label>
+                                                        <input class="form-control" name="secondImage" type="file">
+                                                        <img style="width: 300px; height: 150px; border-radius: 5px; margin-top: 15px;"
+                                                            src="<%= pageEditAboutSection?.secondImage.url || '' %>"
+                                                            alt="img">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fearture-main">
+                                            <div class="card">
+                                                <div
+                                                    class="card-header d-flex justify-content-between align-items-center">
+                                                    <h5 class="mb-0">Features List</h5>
+
+                                                    <button type="button" class="btn btn-primary btn-sm"
+                                                        id="addFeature">
+                                                        <i class="fa fa-plus"></i> Add Feature
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="featureContainer">
+
+                                                <% if(pageEditAboutSection?.features?.length){ %>
+
+                                                    <% pageEditAboutSection.features.forEach(function(feature){ %>
+
+                                                        <div class="feature-card">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center mb-3">
+                                                                <h6 class="mb-0">Feature</h6>
+
+                                                                <button type="button"
+                                                                    class="btn btn-danger btn-sm removeFeature">
+                                                                    Remove
+                                                                </button>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <label for="">Feature Title</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="featureTitle[]"
+                                                                        value="<%= feature.title %>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <% }) %>
+
+                                                            <% } else { %>
+                                                                <p>No Features Found</p>
+
+                                                                <% } %>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <button class="btn btn-primary" type="submit">Update About
+                                                Section</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Container-fluid ends-->
+                </div>
+
+                <%- include("../partials/footer.ejs") %>

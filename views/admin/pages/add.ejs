@@ -1,0 +1,96 @@
+<%- include("../partials/boilerplate.ejs") %>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- Page header end-->
+        <div class="page-body-wrapper">
+            <!-- Page sidebar start-->
+            <%- include("../partials/sidebar.ejs") %>
+                <!-- Page sidebar end-->
+                <div class="page-body">
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-sm-12">
+                                <h3>Add New Page</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <%- include("../partials/flash.ejs") %>
+                        <!-- Container-fluid starts-->
+                        <div class="container-fluid edit-profile">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form class="card" method="POST" action="/admin/pages/add">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Page Name<span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" name="pageName" id="pageName"
+                                                            type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">slug<span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" name="slug" id="slug" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Menu Order</label>
+                                                        <input class="form-control" name="menuOrder" type="number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Section Heading</label>
+                                                        <input class="form-control" name="sectionHeading"
+                                                            type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Section Tag Line</label>
+                                                        <input class="form-control" name="sectionTagLine"
+                                                            type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Meta Title</label>
+                                                        <input class="form-control" name="metaTitle" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Meta Keywords</label>
+                                                        <input class="form-control" name="metaKeywords" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Meta Description</label>
+                                                        <textarea class="form-control" name="metaDescription"
+                                                            id=""></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <label class="form-label">Detail Content</label>
+                                                    <textarea id="content" name="pageContent"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <button class="btn btn-primary" type="submit">Add New Service</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Container-fluid ends-->
+                </div>
+
+                <%- include("../partials/footer.ejs") %>

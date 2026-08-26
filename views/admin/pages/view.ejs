@@ -1,0 +1,125 @@
+<%- include("../partials/boilerplate.ejs") %>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- Page header end-->
+        <div class="page-body-wrapper">
+            <!-- Page sidebar start-->
+            <%- include("../partials/sidebar.ejs") %>
+                <!-- Page sidebar end-->
+                <div class="page-body">
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h3>Pages</h3>
+                                    <a href="/admin/pages/add" class="btn m-1 btn-primary">Add New Page</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Container-fluid starts-->
+                    <%- include("../partials/flash.ejs") %>
+                        <%- include("../partials/model.ejs") %>
+                            <div class="container-fluid edit-profile">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="card-body rolecard-body">
+                                            <div class="table-responsive">
+                                                <table class="display" id="basic-1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Page Name</th>
+                                                            <th>Menu Order</th>
+                                                            <th>Status</th>
+                                                            <th>IsHeader</th>
+                                                            <th>IsFooter</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% if (!allPages || allPages.length===0) { %>
+                                                            <tr>
+                                                                <td colspan="6" class="text-center">
+                                                                    No Pages Found
+                                                                </td>
+                                                            </tr>
+                                                            <% } else { %>
+                                                                <% allPages.forEach((page)=> { %>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <%= page.pageName %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= page.menuOrder %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="flip-btn-wrap">
+                                                                                <button
+                                                                                    class="btn btn-sm status-btn <%= page.status === 'Active' ? '' : 'flipped' %>"
+                                                                                    data-url="/admin/pages/<%= page._id %>/toggle-status">
+                                                                                    <span
+                                                                                        class="flip-front">Active</span>
+                                                                                    <span
+                                                                                        class="flip-back">Inactive</span>
+                                                                                </button>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="flip-btn-wrap">
+                                                                                <button
+                                                                                    class="btn btn-sm flip-btn <%= page.isHeader === 'Yes' ? '' : 'flipped' %>"
+                                                                                    data-url="/admin/pages/<%= page._id %>/toggle-header">
+                                                                                    <span class="flip-front">Yes</span>
+                                                                                    <span class="flip-back">No</span>
+                                                                                </button>
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="flip-btn-wrap">
+                                                                                <button
+                                                                                    class="btn btn-sm footer-btn <%= page.isFooter === 'Yes' ? '' : 'flipped' %>"
+                                                                                    data-url="/admin/pages/<%= page._id %>/toggle-footer">
+                                                                                    <span class="flip-front">Yes</span>
+                                                                                    <span class="flip-back">No</span>
+                                                                                </button>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <ul class="action">
+                                                                                <li class="edit"> <a title="Edit"
+                                                                                        href="/admin/pages/<%= page._id %>/edit"><i
+                                                                                            class="fa-regular fa-pen-to-square"></i></a>
+                                                                                </li>
+                                                                                <li class="delete">
+                                                                                    <button type="button"
+                                                                                        data-url="/admin/pages/<%= page._id %>?_method=DELETE"
+                                                                                        class="delete-btn"
+                                                                                        data-id="<%= page._id %>"
+                                                                                        data-name="<%= page.name %>"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#deleteModel">
+                                                                                        <i
+                                                                                            class="fa-solid fa-trash"></i>
+                                                                                    </button>
+
+                                                                                </li>
+                                                                            </ul>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <% }) %>
+                                                                        <% } %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Container-fluid ends-->
+                </div>
+
+                <%- include("../partials/footer.ejs") %>

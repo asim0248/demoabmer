@@ -1,0 +1,86 @@
+<%- include("../partials/boilerplate.ejs") %>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- Page header end-->
+        <div class="page-body-wrapper">
+            <!-- Page sidebar start-->
+            <%- include("../partials/sidebar.ejs") %>
+                <!-- Page sidebar end-->
+                <div class="page-body">
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-sm-12">
+                                <h3>Edit Customer Review</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <%- include("../partials/flash.ejs") %>
+                        <!-- Container-fluid starts-->
+                        <div class="container-fluid edit-profile">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form class="card" method="POST" action="/admin/customer-reviews/<%= editReview._id %>?_method=PUT"
+                                        enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Customer Name <span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" name="customerName" value="<%= editReview.customerName %>" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Customer Location <span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" value="<%= editReview.location %>" name="location" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Rating <span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" value="<%= editReview.rating %>" name="rating" type="number" min="1"
+                                                            max="5">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Review Text <span
+                                                                style="color: red;">*</span></label>
+                                                        <textarea name="reviewText" id=""
+                                                            class="form-control"><%= editReview.reviewText %></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Sort Order</label>
+                                                        <input class="form-control" name="sortOrder" type="number"
+                                                            value="<%= editReview.sortOrder %>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Customer Image <span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" name="customerImage" type="file">
+                                                        <img style="width: 100px; height: 100px; border-radius: 5px; margin-top: 15px;"
+                                                            src="<%= editReview.customerImage.url %>" alt="img">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <button class="btn btn-primary" type="submit">Update Review</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Container-fluid ends-->
+                </div>
+
+                <%- include("../partials/footer.ejs") %>

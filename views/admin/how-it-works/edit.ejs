@@ -1,0 +1,71 @@
+<%- include("../partials/boilerplate.ejs") %>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- Page header end-->
+        <div class="page-body-wrapper">
+            <!-- Page sidebar start-->
+            <%- include("../partials/sidebar.ejs") %>
+                <!-- Page sidebar end-->
+                <div class="page-body">
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-sm-12">
+                                <h3>Edit Work</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <%- include("../partials/flash.ejs") %>
+                        <!-- Container-fluid starts-->
+                        <div class="container-fluid edit-profile">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form class="card" method="POST" action="/admin/how-it-works/<%= signleWork._id %>?_method=PUT"
+                                        enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Title<span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" value="<%= signleWork.title %>" name="title"
+                                                            type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Description <span
+                                                                style="color: red;">*</span></label>
+                                                        <textarea class="form-control" name="description"
+                                                            id=""><%= signleWork.description %></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">BAckground Image</label>
+                                                        <input class="form-control" name="backgroundImage" type="file">
+                                                        <img style="width: 100px; height: 100px; border-radius: 5px; margin-top: 15px;"
+                                                            src="<%= signleWork.backgroundImage?.url || '' %>" alt="img">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Icon</label>
+                                                        <input class="form-control" name="icon" type="file">
+                                                        <img style="width: 100px; height: 100px;background-color: #000; border-radius: 5px; margin-top: 15px;"
+                                                            src="<%= signleWork.icon?.url || '' %>" alt="img">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <button class="btn btn-primary" type="submit">Update Work</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Container-fluid ends-->
+                </div>
+
+                <%- include("../partials/footer.ejs") %>

@@ -1,0 +1,64 @@
+<%- include("partials/header/header.ejs") %>
+
+    <div class="page-wrapper">
+        <%- include("partials/menu/menu.ejs") %>
+
+
+            <%- include("partials/breadcrump/breadcrump.ejs") %>
+
+                <!--Testimonials Page Start-->
+                <section class="testimonials-page testimonials-page-v2">
+                    <div class="container">
+                        <div class="testimonials-page-v2__inner">
+                            <div class="row">
+                                <% if (pageReviews.length===0) { %>
+                                    <p class="text-center">No Reviews Found.</p>
+                                    <% } else { %>
+                                        <% pageReviews.forEach(sngReview=> { %>
+                                            <!--Testimonial Two Single Start-->
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <div class="testimonial-two__single-inner">
+                                                    <div class="testimonial-two__single">
+                                                        <div class="testimonial-two__single-bg-shape"
+                                                            style="background-image: url(assets/images/shapes/testimonial-two-single-bg-shape.png);">
+                                                        </div>
+                                                        <div class="testimonial-two__author-box">
+                                                            <div class="testimonial-two__author-img">
+                                                                <img src="<%= sngReview.customerImage.url %>"
+                                                                    alt="img">
+                                                            </div>
+                                                            <div class="testimonial-two__author-content">
+                                                                <h3 class="testimonial-two__author-name"><a
+                                                                        href="#"><%= sngReview.customerName %></a></h3>
+                                                                <p class="testimonial-two__author-sub-title"><%= sngReview.location %></p>
+                                                            </div>
+                                                        </div>
+                                                        <p class="testimonial-two__author-text"><%= sngReview.reviewText %></p>
+                                                        <div class="testimonial-two__quote">
+                                                            <span class="fas fa-quote-right"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="testimonial-two__days">
+                                                        <span><%= sngReview.timeAgo %></span>
+                                                    </div>
+                                                    <div class="testimonial-two__ratting">
+                                                                    <% for(let i=1; i <=5; i++) { %>
+                                                                        <% if(i <=sngReview.rating){ %>
+                                                                            <span class="fas fa-star"></span>
+                                                                            <% } else { %>
+                                                                                <span class="far fa-star"></span>
+                                                                                <% } %>
+                                                                                    <% } %>
+                                                                </div>
+                                                </div>
+                                            </div>
+                                            <!--Testimonial Two Single End-->
+                                            <% }); %>
+                                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--Testimonials Page End-->
+
+                <%- include("partials/footer/footer2.ejs") %>

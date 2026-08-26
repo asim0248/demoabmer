@@ -1,0 +1,210 @@
+<!--Site Footer Two Start-->
+<footer class="site-footer-two">
+    <div class="site-footer-two__shape-1 float-bob-x">
+        <img src="/webassets/images/shapes/site-footer-two-shape-1.png" alt="">
+    </div>
+    <div class="container">
+        <div class="site-footer-two__top">
+            <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                    <div class="footer-widget-two__column footer-widget-two__about">
+                        <div class="footer-widget-two__logo">
+                            <a href="/"><img src="<%=  settings.websitewhitelogo.url %>" alt="logo"></a>
+                        </div>
+                        <p class="footer-widget-two__about-text">
+                            <%= settings.footerabouttext %>
+                        </p>
+                        <ul class="footer-widget-two__contact list-unstyled">
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-phone-call"></span>
+                                </div>
+                                <div class="content">
+                                    <h5>Contact</h5>
+                                    <p><a href="tel:<%=  settings.phonenumber %>">
+                                            <%= settings.phonenumber %>
+                                        </a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-location"></span>
+                                </div>
+                                <div class="content">
+                                    <h5>Location</h5>
+                                    <p>
+                                        <%= settings.address %>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                    <div class="footer-widget-two__column footer-widget-two__usefull-link">
+                        <div class="footer-widget-two__title-box">
+                            <h3 class="footer-widget-two__title">Quick Links</h3>
+                        </div>
+                        <div class="footer-widget-two__link-box">
+                            <ul class="footer-widget-two__link list-unstyled">
+                                <% footerPages.forEach(footpage=> { %>
+                                    <% if (!footerPages) { %>
+                                        <li>
+                                            <p>footer pages not found.</p>
+                                        </li>
+                                        <% } else { %>
+                                            <li><a href="<%= footpage.slug %>">
+                                                    <%= footpage.pageName %>
+                                                </a>
+                                            </li>
+                                            <% } %>
+                                                <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="footer-widget-two__column footer-widget-two__services">
+                        <div class="footer-widget-two__title-box">
+                            <h3 class="footer-widget-two__title">Our Services</h3>
+                        </div>
+                        <ul class="footer-widget-two__link list-unstyled">
+                            <% headerServices.forEach(footservice=> { %>
+                                <% if (!headerServices) { %>
+                                    <li>
+                                        <p>footer pages not found.</p>
+                                    </li>
+                                    <% } else { %>
+                                        <li><a href="/services/<%= footservice.slug %>">
+                                                <%= footservice.title %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="footer-widget-two__column footer-widget-two__newsletter">
+                        <h3 class="footer-widget-two__newsletter-title">Subscribe To Our Newsletter To Get
+                            Latest Update</h3>
+                        <form action="/newsletter" method="POST" class="footer-widget-two__newsletter-form">
+                            <div class="footer-widget-two__newsletter-form-input-box">
+                                <input type="hidden" name="redirectUrl" value="<%= currentUrl %>">
+                                <input type="email" placeholder="Enter email address..." name="email" required>
+                                <button type="submit" class="footer-widget-two__newsletter-btn"><span
+                                        class="fas fa-paper-plane"></span></button>
+                            </div>
+                            <div class="result"></div>
+                        </form>
+                        <div class="site-footer-two__social">
+                            <a href="<%=  settings.facebook %>"><i class="icon-facebook-app-symbol"></i></a>
+                            <a href="<%=  settings.twitter %>"><i class="icon-twitter"></i></a>
+                            <a href="<%=  settings.instagram %>"><i class="icon-instagram"></i></a>
+                            <a href="<%=  settings.linkedin %>"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-footer-two__bottom">
+        <div class="container">
+            <div class="site-footer-two__bottom-inner">
+                <p class="site-footer-two__bottom-text">© Copywright 2026 Amber Accident Claims Management. All Rights
+                    Reserved. Designed by <a href="#">HUBSOL</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Site Footer Two End-->
+</div>
+<div class="mobile-nav__wrapper">
+    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+    <!-- /.mobile-nav__overlay -->
+    <div class="mobile-nav__content">
+        <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+        <div class="logo-box">
+            <a href="index.html" aria-label="logo image"><img src="/webassets/images/resources/logo-1.png" width="140"
+                    alt="" /></a>
+        </div>
+        <!-- /.logo-box -->
+        <div class="mobile-nav__container"></div>
+        <!-- /.mobile-nav__container -->
+
+        <ul class="mobile-nav__contact list-unstyled">
+            <li>
+                <i class="fa fa-envelope"></i>
+                <a href="mailto:needhelp@packageName__.com">needhelp@Servixa.com</a>
+            </li>
+            <li>
+                <i class="fas fa-phone"></i>
+                <a href="tel:666-888-0000">666 888 0000</a>
+            </li>
+        </ul><!-- /.mobile-nav__contact -->
+        <div class="mobile-nav__top">
+            <div class="mobile-nav__social">
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-facebook-square"></a>
+                <a href="#" class="fab fa-pinterest-p"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div><!-- /.mobile-nav__social -->
+        </div><!-- /.mobile-nav__top -->
+
+    </div>
+    <!-- /.mobile-nav__content -->
+</div>
+<!-- Search Popup -->
+<div class="search-popup">
+    <div class="color-layer"></div>
+    <button class="close-search"><span class="far fa-times fa-fw"></span></button>
+    <form method="post" action="https://laravel-servixa.mnsithub.com/blog-1">
+        <input type="hidden" name="_token" value="2aG1YWaxgdKkV3WaN5cRcGzYcRXg2lfYAL9GEu7A" autocomplete="off">
+        <div class="form-group">
+            <input type="search" name="search-field" value="" placeholder="Search Here" required="">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+</div>
+<!-- End Search Popup -->
+<a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+    <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    <span class="scroll-to-top__text"> Go Back Top</span>
+</a>
+<script src="/webassets/js/jquery-latest.js"></script>
+<script src="/webassets/js/bootstrap.bundle.min.js"></script>
+<script src="/webassets/js/jarallax.min.js"></script>
+<script src="/webassets/js/jquery.ajaxchimp.min.js"></script>
+<script src="/webassets/js/jquery.appear.min.js"></script>
+<script src="/webassets/js/swiper.min.js"></script>
+<script src="/webassets/js/jquery.magnific-popup.min.js"></script>
+<script src="/webassets/js/jquery.validate.min.js"></script>
+<script src="/webassets/js/wNumb.min.js"></script>
+<script src="/webassets/js/wow.js"></script>
+<script src="/webassets/js/isotope.js"></script>
+<script src="/webassets/js/owl.carousel.min.js"></script>
+<script src="/webassets/js/jquery-ui.js"></script>
+<script src="/webassets/js/jquery.nice-select.min.js"></script>
+<script src="/webassets/js/marquee.min.js"></script>
+<script src="/webassets/js/countdown.min.js"></script>
+<script src="/webassets/js/jquery-sidebar-content.js"></script>
+<script src="/webassets/js/aos.js"></script>
+<script src="/webassets/js/odometer.min.js"></script>
+<script src="/webassets/js/twentytwenty.js"></script>
+<script src="/webassets/js/jquery.event.move.js"></script>
+<script src="/webassets/js/jquery.circle-progress.min.js"></script>
+<script src="/webassets/js/gsap/gsap.js"></script>
+<script src="/webassets/js/gsap/ScrollTrigger.js"></script>
+<script src="/webassets/js/gsap/SplitText.js"></script>
+<script src="/webassets/js/script.js"></script>
+
+<%- customCode && customCode.footerCode ? customCode.footerCode : '' %>
+
+    <script>
+<% - customCode && customCode.jsCode ? customCode.jsCode : '' %>
+    </script>
+
+
+    </body>
+
+    </html>

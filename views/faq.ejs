@@ -1,0 +1,44 @@
+<%- include("partials/header/header.ejs") %>
+
+    <div class="page-wrapper">
+        <%- include("partials/menu/menu.ejs") %>
+
+
+            <%- include("partials/breadcrump/breadcrump.ejs") %>
+
+                <!--FAQ Page Start-->
+                <section class="faq-page">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="faq-one__left">
+                                    <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
+                                        <% if (showWfaqs.length===0) { %>
+                                            <p class="text-center">No Faq Found</p>
+                                            <% } else { %>
+                                                <% showWfaqs.forEach(faq=> { %>
+                                                    <div class="accrodion wow fadeInLeft" data-wow-delay="0ms"
+                                                        data-wow-duration="1500ms">
+                                                        <div class="accrodion-title">
+                                                            <h4><%= faq.question %></h4>
+                                                        </div>
+                                                        <div class="accrodion-content">
+                                                            <div class="inner">
+                                                                <p>
+                                                                    <%= faq.answer %>
+                                                                </p>
+                                                            </div><!-- /.inner -->
+                                                        </div>
+                                                    </div>
+                                                    <% }); %>
+                                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--FAQ Page End-->
+
+
+                <%- include("partials/footer/footer2.ejs") %>

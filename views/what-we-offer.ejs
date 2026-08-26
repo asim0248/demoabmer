@@ -1,0 +1,98 @@
+    <%- include("partials/header/header.ejs") %>
+
+    <div class="page-wrapper">
+        <%- include("partials/menu/menu.ejs") %>
+
+<%- include("partials/breadcrump/breadcrump.ejs") %>
+
+        <!--Services Page Start-->
+        <!--Services Two Start-->
+            <% if(ServicesPage && ServicesPage.length> 0){ %>
+
+                <section class="service-two">
+                    <div class="service-two__wrap">
+                        <div class="container">
+                            <div class="section-title text-center sec-title-animation animation-style1">
+                                <div class="section-title__tagline-box">
+                                    <div class="section-title__tagline-border">
+                                        <div class="section-title__shape-1">
+                                            <i class="section-title__circle"></i>
+                                        </div>
+                                    </div>
+                                    <h6 class="section-title__tagline">SEE OUR WORK</h6>
+                                    <div class="section-title__tagline-border">
+                                        <div class="section-title__shape-2">
+                                            <i class="section-title__circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="section-title__title title-animation">Explore Our <span>Recent
+                                        Work</span>
+                                </h3>
+                            </div>
+
+                            <div class="service-two__inner">
+                                <div class="row">
+
+                                    <% ServicesPage.forEach((service, index)=> { %>
+
+                                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft"
+                                            data-wow-delay="<%= (index + 1) * 100 %>ms">
+
+                                            <div class="service-two__single">
+                                                <div class="service-two__single-inner">
+
+                                                    <div class="service-two__single-bg"
+                                                        style="background-image: url('<%= service.serviceCardImg?.url || "" %>');">
+                                                    </div>
+
+                                                    <h3 class="service-two__title">
+                                                        <a href="/services/<%= service.slug %>">
+                                                            <%= service.title %>
+                                                        </a>
+                                                    </h3>
+
+                                                    <div class="service-two__count"></div>
+
+                                                    <p class="service-two__text">
+                                                        <%= service.shortContent %>
+                                                    </p>
+
+                                                    <div class="service-two__read-more">
+                                                        <a href="/services/<%= service.slug %>">
+                                                            <span class="icon-next"></span>
+                                                            Read More
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="service-two__icon">
+                                                    <% if(service.serviceIcon?.url){ %>
+                                                        <img src="<%= service.serviceIcon.url %>"
+                                                            alt="<%= service.title %>">
+                                                        <% } %>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <% }) %>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-two__see-more">
+                        <a href="/what-we-offer">
+                            View All Services<span class="icon-next"></span>
+                        </a>
+                    </div>
+                </section>
+
+                <% } %>
+        <!--Services Two End-->
+        <!--Services Page End-->
+
+<%- include("partials/footer/footer2.ejs") %>

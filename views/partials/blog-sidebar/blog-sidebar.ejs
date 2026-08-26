@@ -1,0 +1,98 @@
+<div class="sidebar">
+    <!--Start Sidebar Single-->
+    <div class="sidebar__single sidebar__search wow fadeInUp" data-wow-delay=".1s">
+        <form class="sidebar__search-form">
+
+            <input type="search" id="blogSearch" placeholder="Search...">
+
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+
+            <div class="search-results"></div>
+
+        </form>
+    </div>
+    <!--End Sidebar Single-->
+
+
+    <!--Start Sidebar Single-->
+    <div class="sidebar__single sidebar__category wow fadeInUp" data-wow-delay=".1s">
+        <h3 class="sidebar__title">Categories</h3>
+        <% if (!deatilCategories || deatilCategories.length===0) { %>
+            <p>No Categories Found</p>
+            <% } else { %>
+                <ul class="sidebar__category-list list-unstyled">
+                    <% deatilCategories.forEach(singCate=> { %>
+                        <li><a href="/blog/category/<%= singCate.slug %>">
+                                <%= singCate.categoryName %> <span>
+                                        <%= singCate.blogCount %>
+                                    </span>
+                            </a></li>
+                        <% }) %>
+                </ul>
+                <% } %>
+    </div>
+    <!--End Sidebar Single-->
+
+    <!--Start Sidebar Single-->
+    <div class="sidebar__single sidebar__post wow fadeInUp" data-wow-delay=".1s">
+        <h3 class="sidebar__title">Recent Post</h3>
+        <div class="sidebar__post-box">
+            <% recentBlogs.forEach(blog=> { %>
+                <div class="sidebar__post-single">
+                    <div class="sidebar-post__img">
+                        <img src="<%= blog.featureImage.url %>" alt="">
+                    </div>
+                    <div class="sidebar__post-content-box">
+                        <h3><a href="/blog/<%=blog.slug  %>">
+                                <%= blog.blogTitle %>
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+    <!--End Sidebar Single-->
+
+    <!--Start Sidebar Single-->
+    <div class="sidebar__single sidebar__contact">
+        <div class="sidebar__contact-bg"
+            style="background-image: url(/webassets/images/services/sidebar-contact-bg.jpg);">
+        </div>
+        <div class="sidebar__contact-icon">
+            <span class="icon-phone-call"></span>
+        </div>
+        <div class="sidebar__contact-text">
+            <p>Call Us Anytime</p>
+            <h2><a href="tel:<%= settings.phonenumber %>">
+                    <%= settings.phonenumber %>
+                </a></h2>
+        </div>
+        <div class="sidebar__contact-btn">
+            <a class="thm-btn" href="/contact-us">Contact Us
+                <span class="icon-next"></span>
+            </a>
+        </div>
+    </div>
+    <!--End Sidebar Single-->
+
+    <!--Start Sidebar Single-->
+    <div class="sidebar__single sidebar__tags wow fadeInUp" data-wow-delay=".1s">
+        <h3 class="sidebar__title">Tags</h3>
+        <% if (!deatilCategories || deatilCategories.length===0) { %>
+            <p>No Tags Found</p>
+            <% } else { %>
+                <ul class="sidebar__tags-list clearfix list-unstyled">
+                    <% detailTags.forEach(singtag=> { %>
+                        <li><a href="/blog/tag/<%= singtag.slug %>">
+                                <%= singtag.tagName %>
+                            </a></li>
+                        <% }) %>
+                </ul>
+                <% } %>
+    </div>
+    <!--End Sidebar Single-->
+
+</div>

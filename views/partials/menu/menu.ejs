@@ -1,0 +1,104 @@
+<header class="main-header-two">
+    <div class="main-menu-two__top">
+        <div class="main-menu-two__top-inner">
+            <ul class="list-unstyled main-menu-two__contact-list">
+                <li>
+                    <div class="icon">
+                        <i class="icon-phone-call"></i>
+                    </div>
+                    <div class="text">
+                        <p><a href="tel:<%=  settings.phonenumber %>"><%=  settings.phonenumber %></a></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon">
+                        <i class="icon-email"></i>
+                    </div>
+                    <div class="text">
+                        <p><a
+                                href="mailto:<%=  settings.email %>"><%=  settings.email %></a>
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon">
+                        <i class="icon-pin"></i>
+                    </div>
+                    <div class="text">
+                        <p><%=  settings.address %></p>
+                    </div>
+                </li>
+            </ul>
+            <p class="main-menu-two__top-welcome-text">Welcome to Our Servixa Office</p>
+            <div class="main-menu-two__top-right">
+                <div class="main-menu-two__social">
+                    <a href="<%= settings.twitter %>"><i class="fab fa-twitter"></i></a>
+                    <a href="<%= settings.facebook %>"><i class="fab fa-facebook"></i></a>
+                    <a href="<%= settings.linkedin %>"><i class="fab fa-linkedin"></i></a>
+                    <a href="<%= settings.instagram %>"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="main-menu main-menu-two">
+        <div class="main-menu-two__wrapper">
+            <div class="main-menu-two__wrapper-inner">
+                <div class="main-menu-two__left">
+                    <div class="main-menu-two__logo">
+                        <a href="/"><img src="<%= settings.websitelogo.url %>" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="main-menu-two__main-menu-box">
+                    <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                    <ul class="main-menu__list">
+                        <% headerPages.forEach(page=> { %>
+                            <% if(page.slug==='what-we-offer' ) { %>
+                                <li class="dropdown">
+                                    <a href="/what-we-offer">
+                                        <%= page.pageName %>
+                                    </a>
+                                    <ul class="shadow-box">
+                                        <% headerServices.forEach(service=> { %>
+                                            <li><a href="/services/<%= service.slug %>">
+                                                    <%= service.title %>
+                                                </a></li>
+                                            <% }) %>
+                                    </ul>
+                                    <% } else { %>
+                                <li>
+                                    <a href="/<%= page.slug %>"><%= page.pageName %></a>
+                                </li>
+
+                                <% } %>
+                                <% }) %>
+                    </ul>
+                </div>
+                <div class="main-menu-two__right">
+                    <div class="main-menu-two__call">
+                        <div class="main-menu-two__call-icon">
+                            <i class="icon-phone-call"></i>
+                        </div>
+                        <div class="main-menu-two__call-content">
+                            <p class="main-menu-two__call-sub-title">Call Anytime</p>
+                            <h5 class="main-menu-two__call-number"><a href="tel:<%=  settings.phonenumber %>"><%=  settings.phonenumber %></a></h5>
+                        </div>
+                    </div>
+                    <div class="main-menu-two__nav-sidebar-icon">
+                        <a class="navSidebar-button" href="#">
+                            <span class="icon-dots-menu-one"></span>
+                            <span class="icon-dots-menu-two"></span>
+                            <span class="icon-dots-menu-three"></span>
+                        </a>
+                    </div>
+                    <div class="main-menu-two__btn-box">
+                        <a href="/contact" class="thm-btn">Get a Quote<span><i class="icon-next"></i></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="stricky-header stricked-menu main-menu main-menu-two">
+    <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+</div>

@@ -1,0 +1,300 @@
+<%- include("../partials/boilerplate.ejs") %>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- Page header end-->
+        <div class="page-body-wrapper">
+            <!-- Page sidebar start-->
+            <%- include("../partials/sidebar.ejs") %>
+                <!-- Page sidebar end-->
+                <div class="page-body">
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-sm-6">
+                                <h3>settings</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Container-fluid starts-->
+                    <%- include("../partials/flash.ejs") %>
+                        <div class="container-fluid edit-profile">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form class="card" method="POST" action="/admin/setting"
+                                        enctype="multipart/form-data">
+                                        <div class="card-header">
+                                            <h4 class="card-title mb-0">Edit Admin & Webiste Settings</h4>
+                                        </div>
+                                        <!-- General Settings -->
+                                        <div class="card-body sett-body">
+                                            <h3 class="setting-head">General Settings</h3>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Website Name</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.websitename :  '' %>"
+                                                            name="websitename" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Webiste Link</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.websiteurl :  '' %>"
+                                                            name="websiteurl" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Primary Color</label>
+                                                        <input class="form-control" name="primarycolor"
+                                                            value="<%= settings ? settings.primarycolor :  '#f88602' %>"
+                                                            type="color">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Secondary Color</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.secondarycolor :  '#211f4e' %>"
+                                                            name="secondarycolor" type="color">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Website Logo</label>
+                                                        <input class="form-control" name="websitelogo" type="file"
+                                                            accept="image/*">
+                                                        <img src="<%= settings && settings.websitelogo ? settings.websitelogo.url :  '' %>"
+                                                            alt="logo" style="width: 200px; margin-top: 15px;">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Website White Logo</label>
+                                                        <input class="form-control" name="websitewhitelogo" type="file"
+                                                            accept="image/*">
+                                                        <img src="<%= settings && settings.websitewhitelogo ? settings.websitewhitelogo.url :  '' %>"
+                                                            alt="logo" style="width: 200px; margin-top: 15px;">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Admin Logo</label>
+                                                        <input class="form-control" name="adminlogo" type="file"
+                                                            accept="image/*">
+                                                        <img src="<%= settings && settings.adminlogo ? settings.adminlogo.url :  '' %>"
+                                                            alt="Logo" style="width: 200px; margin-top: 15px;">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Webiste Fav Icon</label>
+                                                        <input class="form-control" name="websitefavicon" type="file"
+                                                            accept="image/*">
+                                                        <img src="<%= settings && settings.websitefavicon ? settings.websitefavicon.url :  '' %>"
+                                                            alt="favicon" style="width: 200px; margin-top: 15px;">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Master Admin Fav icon</label>
+                                                        <input class="form-control" name="websiteadminfavicon"
+                                                            type="file" accept="image/*">
+                                                        <img src="<%= settings && settings.websiteadminfavicon ? settings.websiteadminfavicon.url :  '' %>"
+                                                            alt="favicon" style="width: 200px; margin-top: 15px;">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Sidebar About Text</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.sidebarabouttext :  '' %>"
+                                                            name="sidebarabouttext" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Footer About Text</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.footerabouttext :  '' %>"
+                                                            name="footerabouttext" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Footer Copy Text</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.footercopytext :  '' %>"
+                                                            name="footercopytext" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Contact Page Text</label>
+                                                        <textarea name="contactpagetext" class="form-control"
+                                                            id=""><%= settings ? settings.contactpagetext :  ''  %></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Paste Map Embeded Url Here</label>
+                                                        <textarea name="googleMapEmbedUrl" class="form-control"
+                                                            id=""><%= settings ? settings.googleMapEmbedUrl :  ''  %></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Contact Settings -->
+                                        <div class="card-body sett-body">
+                                            <h3 class="setting-head">Contact Settings</h3>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Email</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.email :  '' %>" name="email"
+                                                            type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Phone Number</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.phonenumber :  '' %>"
+                                                            name="phonenumber" type="tel">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Address</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.address :  '' %>"
+                                                            name="address" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Office Timing</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.officetiming :  '' %>"
+                                                            name="officetiming" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Social Media Settings -->
+                                        <div class="card-body sett-body">
+                                            <h3 class="setting-head">Social Media Profile Settings</h3>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Facebook Profile Link</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.facebook :  '#' %>"
+                                                            name="facebook" type="url">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Instagram Profile Link</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.instagram :  '#' %>"
+                                                            name="instagram" type="url">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Twitter(X) Profile Link</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.twitter :  '#' %>"
+                                                            name="twitter" type="url">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Linkedin Profile Link</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.linkedin :  '#' %>"
+                                                            name="linkedin" type="url">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SMTP Settings -->
+                                        <div class="card-body sett-body">
+                                            <h3 class="setting-head">SMTP Settings</h3>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">From Name</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.fromname :  '' %>"
+                                                            name="fromname" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">From Email</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.fromemail :  '' %>"
+                                                            name="fromemail" type="email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">SMTP Driver</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.smtpDriver :  '' %>"
+                                                            name="smtpDriver" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">SMTP Username</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.smtpusername :  '' %>"
+                                                            name="smtpusername" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">SMTP Host</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.smtpHost :  '' %>"
+                                                            name="smtpHost" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">SMTP Port</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.smtpPort :  '' %>"
+                                                            name="smtpPort" type="number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">SMTP Password</label>
+                                                        <input class="form-control"
+                                                            value="<%= settings ? settings.smtppassword :  '' %>"
+                                                            name="smtppassword" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <button class="btn btn-primary" type="submit">Update Setting</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Container-fluid ends-->
+                </div>
+
+                <%- include("../partials/footer.ejs") %>

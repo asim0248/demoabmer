@@ -1,0 +1,128 @@
+<%- include("../partials/boilerplate.ejs") %>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- Page header end-->
+        <div class="page-body-wrapper">
+            <!-- Page sidebar start-->
+            <%- include("../partials/sidebar.ejs") %>
+                <!-- Page sidebar end-->
+                <div class="page-body">
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-sm-12">
+                                <h3>Edit Service</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <%- include("../partials/flash.ejs") %>
+                        <!-- Container-fluid starts-->
+                        <div class="container-fluid edit-profile">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form class="card" method="POST"
+                                        action="/admin/what-we-offer/<%= singleService._id  %>?_method=PUT"
+                                        enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Title<span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" value="<%=singleService.title  %>"
+                                                            id="serv-slug" id="serv-tit" name="title" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">slug <span
+                                                                style="color: red;">*</span></label>
+                                                        <input class="form-control" name="slug"
+                                                            value="<%=singleService.slug  %>" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Sort Order</label>
+                                                        <input class="form-control" name="sortOrder"
+                                                            value="<%=singleService.sortOrder  %>" type="number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Short Content</label>
+                                                        <textarea class="form-control" name="shortContent"
+                                                            id=""><%=singleService.shortContent  %></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Service Icon</label>
+                                                        <input class="form-control" name="serviceIcon" type="file">
+                                                        <% if(singleService.serviceIcon?.url){ %>
+                                                            <img src="<%= singleService.serviceIcon.url %>"
+                                                                style="width:100px;height:100px;border-radius:5px;margin-top:15px;">
+                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Service Detail Image</label>
+                                                        <input class="form-control" name="serviceDetImg" type="file">
+                                                        <% if(singleService.serviceDetImg?.url){ %>
+                                                            <img src="<%= singleService.serviceDetImg.url %>"
+                                                                style="width:100px;height:100px;border-radius:5px;margin-top:15px;">
+                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Service Card Image</label>
+                                                        <input class="form-control" name="serviceCardImg" type="file">
+                                                        <% if(singleService.serviceCardImg?.url){ %>
+                                                            <img src="<%= singleService.serviceCardImg.url %>"
+                                                                style="width:100px;height:100px;border-radius:5px;margin-top:15px;">
+                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Meta Title</label>
+                                                        <input class="form-control"
+                                                            value="<%=singleService.metaTitle  %>" name="metaTitle"
+                                                            type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Meta Keywords</label>
+                                                        <input class="form-control"
+                                                            value="<%=singleService.metaKeywords  %>"
+                                                            name="metaKeywords" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Meta Description</label>
+                                                        <textarea class="form-control" name="metaDescription"
+                                                            id=""><%=singleService.metaDescription  %></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <label class="form-label">Service Deatil Content</label>
+                                                    <textarea name="detailContent"
+                                                        id="servDescription"><%=singleService.detailContent  %></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <button class="btn btn-primary" type="submit">Update Service</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Container-fluid ends-->
+                </div>
+
+                <%- include("../partials/footer.ejs") %>

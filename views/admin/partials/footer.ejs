@@ -1,0 +1,515 @@
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 footer-copyright">
+        <p class="mb-0">Copyright 2026 © Admin Panel. Design & Developed By Asim Saeed.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+</main>
+<!-- jquery-->
+<script src="/adminassets/js/vendors/jquery/dist/jquery.min.js"></script>
+<script src="/adminassets/js/summernote/summernote.min.js"></script>
+<script src="/adminassets/js/summernote/summernote-image-attributes.js"></script>
+<script src="/adminassets/js/summernote/summernote.js"></script>
+
+<!-- bootstrap js-->
+<script src="/adminassets/js/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/adminassets/js/config.js"></script>
+<!-- Sidebar js-->
+<script src="/adminassets/js/sidebar.js"></script>
+<!-- Datatable js-->
+<script src="/adminassets/js/vendors/simple-datatables/dist/umd/simple-datatables.js"></script>
+<script src="/adminassets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+<script src="/adminassets/js/datatable/datatables/datatable.custom.js"></script>
+<!-- default dashboard js-->
+<!-- <script src="/adminassets/js/dashboard/default.js"></script> -->
+<!-- scrollbar js-->
+<script src="/adminassets/js/scrollbar/simplebar.js"></script>
+<script src="/adminassets/js/scrollbar/custom.js"></script>
+
+<% if(typeof pageScript !=='undefined' && pageScript==='custom-code' ){ %>
+  <!--Ace editor files for Custom Code Module-->
+  <script src="/adminassets/js/editor/ace-editor/ace.js"></script>
+  <script src="/adminassets/js/editor/ace-editor/ace-custom.js"></script>
+  <script src="/adminassets/js/editor/ace-editor/mode-css.js"></script>
+  <script src="/adminassets/js/editor/ace-editor/mode-html.js"></script>
+  <script src="/adminassets/js/editor/ace-editor/mode-javascript.js"></script>
+  <script src="/adminassets/js/editor/ace-editor/theme-monokai.js"></script>
+  <script src="/adminassets/js/editor/ace-editor/worker-css.js"></script>
+  <script src="/adminassets/js/editor/ace-editor/worker-html.js"></script>
+  <script src="/adminassets/js/editor/ace-editor/worker-javascript.js"></script>
+  <% } %>
+
+    <% if(typeof pageScript !=='undefined' && pageScript==='pages' ){ %>
+      <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs5.min.js"></script>
+      <script>
+
+        $(document).ready(function () {
+
+          $('#content').summernote({
+
+            height: 300,                 // set editor height
+
+            minHeight: null,             // set minimum height of editor
+
+            maxHeight: null,             // set maximum height of editor
+
+            focus: false,                  // set focus to editable area after initializing summernote
+
+          });
+
+        });
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const pageName = document.getElementById('pageName');
+          const slug = document.getElementById('slug');
+
+          pageName.addEventListener('input', function () {
+            const slugValue = this.value
+              .toLowerCase()
+              .trim()
+              .replace(/[^a-z0-9\s-]/g, '')
+              .replace(/\s+/g, '-');
+
+            slug.value = slugValue;
+          });
+        });
+      </script>
+      <!-- <script src="/adminassets/js/ckeditor/ckeditor.custom.js"></script> -->
+      <% } %>
+
+        <% if(typeof pageScript !=='undefined' && pageScript==='what-we-offer' ){ %>
+          <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs5.min.js"></script>
+          <script>
+
+            $(document).ready(function () {
+
+              $('#servDescription').summernote({
+
+                height: 300,                 // set editor height
+
+                minHeight: null,             // set minimum height of editor
+
+                maxHeight: null,             // set maximum height of editor
+
+                focus: false,                  // set focus to editable area after initializing summernote
+
+              });
+
+            });
+          </script>
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const servTitle = document.getElementById('serv-tit');
+              const slug = document.getElementById('serv-slug');
+
+              servTitle.addEventListener('input', function () {
+                const servSlugValue = this.value
+                  .toLowerCase()
+                  .trim()
+                  .replace(/[^a-z0-9\s-]/g, '')
+                  .replace(/\s+/g, '-');
+
+                slug.value = servSlugValue;
+              });
+            });
+          </script>
+          <!-- <script src="/adminassets/js/ckeditor/ckeditor.custom.js"></script> -->
+          <% } %>
+
+            <% if(typeof pageScript !=='undefined' && pageScript==='blog' ){ %>
+              <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+              <script>
+                $(document).ready(function () {
+
+                  $('#category').select2({
+                    placeholder: 'Select Categories',
+                    allowClear: true,
+                    width: '100%'
+                  });
+
+                  $('#tags').select2({
+                    placeholder: 'Select Tags',
+                    allowClear: true,
+                    width: '100%'
+                  });
+
+                });
+              </script>
+              <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs5.min.js"></script>
+
+              <script>
+
+                $(document).ready(function () {
+
+                  $('#content').summernote({
+
+                    height: 300,                 // set editor height
+
+                    minHeight: null,             // set minimum height of editor
+
+                    maxHeight: null,             // set maximum height of editor
+
+                    focus: false,                  // set focus to editable area after initializing summernote
+
+                  });
+
+                });
+              </script>
+              <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                  const blogTitle = document.getElementById('blogTitle');
+                  const slug = document.getElementById('slug');
+
+                  blogTitle.addEventListener('input', function () {
+                    const slugValue = this.value
+                      .toLowerCase()
+                      .trim()
+                      .replace(/[^a-z0-9\s-]/g, '')
+                      .replace(/\s+/g, '-');
+
+                    slug.value = slugValue;
+                  });
+                });
+              </script>
+              <script>
+                $('#publishType').change(function () {
+
+                  if ($(this).val() == 'Schedule') {
+                    $('#scheduleBox').slideDown();
+                  } else {
+                    $('#scheduleBox').slideUp();
+                  }
+
+                });
+
+                $('#publishType').trigger('change');
+              </script>
+              <script>
+                function toggleSchedule() {
+
+                  if ($('#publishType').val() == 'Schedule') {
+
+                    $('#scheduleBox').show();
+
+                  } else {
+
+                    $('#scheduleBox').hide();
+
+                  }
+
+                }
+
+                toggleSchedule();
+
+                $('#publishType').change(toggleSchedule);
+              </script>
+              <!-- <script src="/adminassets/js/ckeditor/ckeditor.custom.js"></script> -->
+              <% } %>
+
+                <% if(typeof pageScript !=='undefined' && pageScript==='blog-post' ){ %>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                      const categoryName = document.getElementById('categoryName');
+                      const slug = document.getElementById('slug');
+
+                      categoryName.addEventListener('input', function () {
+                        const slugValue = this.value
+                          .toLowerCase()
+                          .trim()
+                          .replace(/[^a-z0-9\s-]/g, '')
+                          .replace(/\s+/g, '-');
+
+                        slug.value = slugValue;
+                      });
+                    });
+                  </script>
+                  <% } %>
+
+                    <% if(typeof pageScript !=='undefined' && pageScript==='tags' ){ %>
+                      <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                          const blogTag = document.getElementById('tageName');
+                          const tagSlug = document.getElementById('tagSlug');
+
+                          blogTag.addEventListener('input', function () {
+                            const slugValue = this.value
+                              .toLowerCase()
+                              .trim()
+                              .replace(/[^a-z0-9\s-]/g, '')
+                              .replace(/\s+/g, '-');
+
+                            tagSlug.value = slugValue;
+                          });
+                        });
+                      </script>
+                      <% } %>
+                        <% if(typeof pageScript !=='undefined' && pageScript==='about-us-section' ){ %>
+                          <script>
+
+                            $(document).ready(function () {
+
+                              $("#addFeature").click(function () {
+
+                                let html = `
+
+        <div class="feature-card">
+
+            <button type="button"
+                class="btn btn-danger btn-sm removeFeature">
+
+                Remove
+
+            </button>
+
+            <div class="feature-title">
+                Feature
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12 mb-3">
+
+                    <label>Title</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="featureTitle[]">
+
+                </div>
+
+<div class="col-md-6 mb-3">
+    <label>Icon Class</label>
+
+    <input
+        type="text"
+        class="form-control"
+        name="featureIcon[]"
+        placeholder="fa-solid fa-screwdriver-wrench">
+</div>
+
+                <div class="col-md-12">
+
+                    <label>Description</label>
+
+                    <textarea
+                        class="form-control"
+                        rows="4"
+                        name="featureDescription[]"></textarea>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+                                $("#featureContainer").append(html);
+
+                              });
+
+
+                              $(document).on("click", ".removeFeature", function () {
+
+                                if ($(".feature-card").length == 1) {
+
+                                  alert("At least one feature is required.");
+
+                                  return;
+
+                                }
+
+                                $(this).closest(".feature-card").remove();
+
+                              });
+
+                            });
+                            $(document).on("click", ".removeFeature", function () {
+
+                              $(this).closest(".feature-card").remove();
+
+                            });
+                          </script>
+                          <% } %>
+
+                            <% if(typeof pageScript !=='undefined' && pageScript==='about-us-page-section' ){ %>
+                              <script>
+
+                                $(document).ready(function () {
+
+                                  $("#addFeature").click(function () {
+
+                                    let html = `
+
+        <div class="feature-card">
+
+            <button type="button"
+                class="btn btn-danger btn-sm removeFeature">
+
+                Remove
+
+            </button>
+
+            <div class="feature-title">
+                Feature
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12 mb-3">
+
+                    <label>Title</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="featureTitle[]">
+
+                </div>
+            </div>
+
+        </div>
+
+        `;
+
+                                    $("#featureContainer").append(html);
+
+                                  });
+
+
+                                  $(document).on("click", ".removeFeature", function () {
+
+                                    if ($(".feature-card").length == 1) {
+
+                                      alert("At least one feature is required.");
+
+                                      return;
+
+                                    }
+
+                                    $(this).closest(".feature-card").remove();
+
+                                  });
+
+                                });
+                                $(document).on("click", ".removeFeature", function () {
+
+                                  $(this).closest(".feature-card").remove();
+
+                                });
+                              </script>
+                              <% } %>
+
+                                <% if(typeof pageScript !=='undefined' && pageScript==='why-choose-us' ){ %>
+                                  <script>
+
+                                    $(document).ready(function () {
+
+                                      $("#addFeature").click(function () {
+
+                                        let html = `
+
+        <div class="feature-card">
+
+            <button type="button"
+                class="btn btn-danger btn-sm removeFeature">
+
+                Remove
+
+            </button>
+
+            <div class="feature-title">
+                Feature
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12 mb-3">
+
+                    <label>Title</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="featureTitle[]">
+
+                </div>
+
+<div class="col-md-6 mb-3">
+    <label>Icon Class</label>
+
+    <input
+        type="text"
+        class="form-control"
+        name="featureIcon[]"
+        placeholder="fa-solid fa-screwdriver-wrench">
+</div>
+
+                <div class="col-md-12">
+
+                    <label>Description</label>
+
+                    <textarea
+                        class="form-control"
+                        rows="4"
+                        name="featureDescription[]"></textarea>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+                                        $("#featureContainer").append(html);
+
+                                      });
+
+
+                                      $(document).on("click", ".removeFeature", function () {
+
+                                        if ($(".feature-card").length == 1) {
+
+                                          alert("At least one feature is required.");
+
+                                          return;
+
+                                        }
+
+                                        $(this).closest(".feature-card").remove();
+
+                                      });
+
+                                    });
+
+                                    $(document).on("click", ".removeFeature", function () {
+
+                                      $(this).closest(".feature-card").remove();
+
+                                    });
+
+                                  </script>
+                                  <% } %>
+
+                                    <!-- scrollable-->
+                                    <script src="/adminassets/js/password.js"></script>
+                                    <!-- customizer-->
+                                    <!-- <script src="/adminassets/js/theme-customizer/customizer.js"></script> -->
+                                    <!-- custom script -->
+                                    <script src="/adminassets/js/script.js"></script>
+                                    <!-- custom Status js -->
+                                    <script src="/adminassets/js/statusCommon.js"></script>
+                                    <script src="/adminassets/js/featuredCommon.js"></script>
+                                    <script src="/adminassets/js/commonHeader.js"></script>
+                                    <script src="/adminassets/js/commonFooter.js"></script>
+                                    </body>
+
+
+                                    </html>

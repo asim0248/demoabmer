@@ -1,0 +1,120 @@
+<%- include("../partials/boilerplate.ejs") %>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- Page header end-->
+        <div class="page-body-wrapper">
+            <!-- Page sidebar start-->
+            <%- include("../partials/sidebar.ejs") %>
+                <!-- Page sidebar end-->
+                <div class="page-body">
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-sm-6">
+                                <h3>Custom Code</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Container-fluid starts-->
+                    <%- include("../partials/flash.ejs") %>
+                        <div class="container-fluid">
+                            <form action="/admin/custom-code" method="POST">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-header pb-0">
+                                                <h4>Html Mode For Head Tags
+                                                </h4>
+                                                <p class="desc mb-0 mt-1"><span></span><code></code><span></span></p>
+                                                <p>
+                                                    <b>Supported:</b> Add custom code that will be injected before the
+                                                    closing <b></body></b> tag. Use this area for chat widgets, tracking
+                                                    scripts, external JavaScript libraries, marketing tools, and other
+                                                    footer integrations.
+                                                </p>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="ace-editor" id="header-html-editor">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-header pb-0">
+                                                <h4>Html Mode For Footer Tags
+                                                </h4>
+                                                <p class="desc mb-0 mt-1"><span></span><code></code><span></span></p>
+
+                                                <p>
+                                                    <b>Supported:</b> Meta Tags, Google Search Console, Schema Markup,
+                                                    Analytics, Pixel Codes, External CSS & Third-Party Integrations.
+                                                </p>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="ace-editor" id="footer-html-editor">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-header pb-0">
+                                                <h4>Javascript Mode</h4>
+                                                <p class="desc mb-0 mt-1"><span></span><code></code><span></span></p>
+                                                <p>
+                                                    <b>Supported:</b> Add custom JavaScript code to extend website
+                                                    functionality. Use this area for DOM manipulation, event handling,
+                                                    custom interactions, form enhancements, and third-party script
+                                                    initialization. Don't add json format code in this field. If you want to add json format code warp them in "</script>" tag then paste in header or footer editor.
+                                                </p>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="ace-editor" id="editor">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-header pb-0">
+                                                <h4>css Mode</h4>
+                                                <p class="desc mb-0 mt-1"><span></span><code></code><span></span></p>
+                                                <p>
+                                                    <b>Supported:</b> Add custom CSS styles to modify the appearance of
+                                                    your website. Use this area for layout adjustments, design
+                                                    customization, responsive styling, animations, and visual
+                                                    enhancements.
+                                                </p>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="ace-editor" id="css-editor">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="headerCode" id="headerCode">
+                                    <input type="hidden" name="footerCode" id="footerCode">
+                                    <input type="hidden" name="jsCode" id="jsCode">
+                                    <input type="hidden" name="cssCode" id="cssCode">
+
+                                    <textarea id="savedHeaderCode" hidden><%= customCode?.headerCode || '' %></textarea>
+
+                                    <textarea id="savedFooterCode" hidden><%= customCode?.footerCode || '' %></textarea>
+
+                                    <textarea id="savedJsCode" hidden><%= customCode?.jsCode || '' %></textarea>
+
+                                    <textarea id="savedCssCode" hidden><%= customCode?.cssCode || '' %></textarea>
+
+                                    <div class="col-xl-12 text-end pb-4">
+                                        <button class="btn btn-primary" type="submit">Update Custom Code</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+
+                <%- include("../partials/footer.ejs") %>
