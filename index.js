@@ -234,7 +234,7 @@ const blogCategory = require('./models/blog-category.js');
 const blogTags = require('./models/blog-tags.js');
 
 // Server port
-const port = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 // MongoDB URL
 const DB_URL = process.env.DB_URL;
@@ -1773,6 +1773,6 @@ app.use((err, req, res, next) => {
 // ================= SERVER =================
 
 // Start server
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+app.listen(PORT,'0.0.0.0', () => {
+    console.log(`Server is running on port ${PORT}`);
 });
