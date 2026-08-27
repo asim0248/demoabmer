@@ -56686,7 +56686,8 @@ button.read-btn {
     color:var(--text-muted);
     font-weight:400;
   }
-.login-card .logo .for-dark {
+.login-card .logo .for-dark,
+.login-card .logo .for-light{
     width: 150px;
 }
 .page-header .logo-wrapper a .for-dark,
